@@ -68,6 +68,28 @@ uv sync                          # Install dependencies
 # (start relevant MCP servers first)
 ```
 
+## FastMCP Server (graphiti-fastmcp)
+
+The MCP server powering this repo's graph connections lives at `/home/donbr/graphiti-fastmcp`
+(v1.0.1). It will be curated and migrated into this repo during **Wave 4** (after Wave 3
+orchestration completes), ensuring domain-specific schemas reflect actual deepagents/temporal
+usage patterns. Until then, it runs as an external service via `.mcp.json`.
+
+**Key architectural patterns:**
+
+| Component | Purpose |
+|-----------|---------|
+| `src/server.py` (factory pattern) | FastMCP Cloud-compatible entrypoint |
+| `src/services/queue_service.py` | Sequential per-group episode processing (prevents race conditions) |
+| `src/config/schema.py` | Multi-source config: env vars → YAML → CLI → defaults |
+| `src/services/factories.py` | Swappable LLM, embedder, and database providers |
+
+**MCP tools exposed**: `add_memory`, `search_nodes`, `search_memory_facts`, `get_episodes`,
+`get_entity_edge`, `delete_entity_edge`, `delete_episode`, `clear_graph`, `get_status`
+
+**Curation needed before migration**: align to hatchling build backend, ruff config, pytest
+markers (`unit`/`integration`/`e2e`), and update graphiti-core version pinning.
+
 ## Conventions
 
 - Python >=3.11, uv, hatchling, ruff, pyright
