@@ -1,0 +1,52 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "biosciences-memory"
+version = "0.1.0"
+description = "Graphiti knowledge graph memory layer for the Open Biosciences platform"
+requires-python = ">=3.11"
+license = "MIT"
+dependencies = [
+    "fastmcp>=2.13.3,<3",
+    "graphiti-core==0.24.3",
+    "openai>=1.91.0",
+    "pydantic>=2.0.0",
+    "pydantic-settings>=2.0.0",
+    "pyyaml>=6.0",
+    "python-dotenv>=1.0.0",
+    "typing-extensions>=4.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.0.0",
+    "pytest-asyncio>=0.21.0",
+    "pytest-timeout>=2.4.0",
+    "ruff>=0.7.1",
+    "pyright>=1.1.404",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/biosciences_memory"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "B", "UP"]
+
+[tool.pyright]
+pythonVersion = "3.11"
+typeCheckingMode = "basic"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+markers = [
+    "unit: Unit tests (no external dependencies)",
+    "integration: Integration tests (may need Neo4j or API keys)",
+    "e2e: End-to-end tests (full stack)",
+]
