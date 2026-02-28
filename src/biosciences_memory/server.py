@@ -42,18 +42,18 @@ from biosciences_memory.utils.formatting import format_fact_result
 
 # Load .env file
 mcp_server_dir = Path(__file__).parent.parent.parent
-env_file = mcp_server_dir / '.env'
+env_file = mcp_server_dir / ".env"
 if env_file.exists():
     load_dotenv(env_file)
 else:
     load_dotenv()
 
 # Semaphore limit configuration
-SEMAPHORE_LIMIT = int(os.getenv('SEMAPHORE_LIMIT', 10))
+SEMAPHORE_LIMIT = int(os.getenv("SEMAPHORE_LIMIT", 10))
 
 # Configure logging
-LOG_FORMAT = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
-DATE_FORMAT = '%Y-%m-%d %H:%M:%S'
+LOG_FORMAT = "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+DATE_FORMAT = "%Y-%m-%d %H:%M:%S"
 
 logging.basicConfig(
     level=logging.INFO,
@@ -63,18 +63,18 @@ logging.basicConfig(
 )
 
 # Configure specific loggers
-logging.getLogger('uvicorn').setLevel(logging.INFO)
-logging.getLogger('uvicorn.access').setLevel(logging.WARNING)
-logging.getLogger('mcp.server.streamable_http_manager').setLevel(logging.WARNING)
+logging.getLogger("uvicorn").setLevel(logging.INFO)
+logging.getLogger("uvicorn.access").setLevel(logging.WARNING)
+logging.getLogger("mcp.server.streamable_http_manager").setLevel(logging.WARNING)
 
 # Enable OpenAI trace logging (configurable via environment)
-openai_log_level = os.getenv('OPENAI_LOG_LEVEL', 'DEBUG')
-httpx_log_level = os.getenv('HTTPX_LOG_LEVEL', 'INFO')
-graphiti_log_level = os.getenv('GRAPHITI_LOG_LEVEL', 'DEBUG')
+openai_log_level = os.getenv("OPENAI_LOG_LEVEL", "DEBUG")
+httpx_log_level = os.getenv("HTTPX_LOG_LEVEL", "INFO")
+graphiti_log_level = os.getenv("GRAPHITI_LOG_LEVEL", "DEBUG")
 
-logging.getLogger('openai').setLevel(getattr(logging, openai_log_level))
-logging.getLogger('httpx').setLevel(getattr(logging, httpx_log_level))
-logging.getLogger('graphiti_core').setLevel(getattr(logging, graphiti_log_level))
+logging.getLogger("openai").setLevel(getattr(logging, openai_log_level))
+logging.getLogger("httpx").setLevel(getattr(logging, httpx_log_level))
+logging.getLogger("graphiti_core").setLevel(getattr(logging, graphiti_log_level))
 
 logger = logging.getLogger(__name__)
 
@@ -97,7 +97,7 @@ class Neo4jDriverWithPoolConfig(Neo4jDriver):
         uri: str,
         user: str | None,
         password: str | None,
-        database: str = 'neo4j',
+        database: str = "neo4j",
         max_connection_lifetime: int = 300,
         max_connection_pool_size: int = 50,
         connection_acquisition_timeout: float = 60.0,
@@ -111,7 +111,7 @@ class Neo4jDriverWithPoolConfig(Neo4jDriver):
         # Create driver with pool configuration
         self.client = AsyncGraphDatabase.driver(
             uri=uri,
-            auth=(user or '', password or ''),
+            auth=(user or "", password or ""),
             max_connection_lifetime=max_connection_lifetime,
             max_connection_pool_size=max_connection_pool_size,
             connection_acquisition_timeout=connection_acquisition_timeout,
@@ -120,10 +120,10 @@ class Neo4jDriverWithPoolConfig(Neo4jDriver):
         self.aoss_client = None
 
         logger.info(
-            f'Created Neo4j driver with pool config: '
-            f'max_lifetime={max_connection_lifetime}s, '
-            f'pool_size={max_connection_pool_size}, '
-            f'acquisition_timeout={connection_acquisition_timeout}s'
+            f"Created Neo4j driver with pool config: "
+            f"max_lifetime={max_connection_lifetime}s, "
+            f"pool_size={max_connection_pool_size}, "
+            f"acquisition_timeout={connection_acquisition_timeout}s"
         )
 
 
@@ -181,12 +181,12 @@ class GraphitiService:
             try:
                 llm_client = LLMClientFactory.create(self.config.llm)
             except Exception as e:
-                logger.warning(f'Failed to create LLM client: {e}')
+                logger.warning(f"Failed to create LLM client: {e}")
 
             try:
                 embedder_client = EmbedderFactory.create(self.config.embedder)
             except Exception as e:
-                logger.warning(f'Failed to create embedder client: {e}')
+                logger.warning(f"Failed to create embedder client: {e}")
 
             db_config = DatabaseDriverFactory.create_config(self.config.database)
 
@@ -198,7 +198,7 @@ class GraphitiService:
                     entity_model = type(
                         entity_type.name,
                         (BaseModel,),
-                        {'__doc__': entity_type.description},
+                        {"__doc__": entity_type.description},
                     )
                     custom_types[entity_type.name] = entity_model
             else:
@@ -209,14 +209,14 @@ class GraphitiService:
             # Use custom Neo4j driver with connection pool configuration
             # This prevents "defunct connection" errors with Neo4j Aura
             neo4j_driver = Neo4jDriverWithPoolConfig(
-                uri=db_config['uri'],
-                user=db_config['user'],
-                password=db_config['password'],
-                database=db_config.get('database', 'neo4j'),
-                max_connection_lifetime=db_config.get('max_connection_lifetime', 300),
-                max_connection_pool_size=db_config.get('max_connection_pool_size', 50),
+                uri=db_config["uri"],
+                user=db_config["user"],
+                password=db_config["password"],
+                database=db_config.get("database", "neo4j"),
+                max_connection_lifetime=db_config.get("max_connection_lifetime", 300),
+                max_connection_pool_size=db_config.get("max_connection_pool_size", 50),
                 connection_acquisition_timeout=db_config.get(
-                    'connection_acquisition_timeout', 60.0
+                    "connection_acquisition_timeout", 60.0
                 ),
             )
             self.client = Graphiti(
@@ -231,25 +231,25 @@ class GraphitiService:
             try:
                 await self.client.build_indices_and_constraints()
             except Exception as idx_error:
-                if 'EquivalentSchemaRuleAlreadyExists' in str(idx_error):
+                if "EquivalentSchemaRuleAlreadyExists" in str(idx_error):
                     logger.warning(
-                        'Index creation race condition detected (Neo4j 5.x issue). '
-                        'Indexes likely already exist. Continuing...'
+                        "Index creation race condition detected (Neo4j 5.x issue). "
+                        "Indexes likely already exist. Continuing..."
                     )
                 else:
                     raise
 
-            logger.info('Successfully initialized Graphiti client')
+            logger.info("Successfully initialized Graphiti client")
 
         except Exception as e:
-            logger.error(f'Failed to initialize Graphiti client: {e}')
+            logger.error(f"Failed to initialize Graphiti client: {e}")
             raise
 
     async def get_client(self) -> Graphiti:
         if self.client is None:
             await self.initialize()
         if self.client is None:
-            raise RuntimeError('Failed to initialize Graphiti client')
+            raise RuntimeError("Failed to initialize Graphiti client")
         return self.client
 
 
@@ -264,7 +264,7 @@ async def create_server() -> FastMCP:
     This is the entrypoint for FastMCP Cloud and `fastmcp dev`.
     Configuration comes from environment variables and config files only.
     """
-    logger.info('Initializing Biosciences Memory MCP server via factory pattern...')
+    logger.info("Initializing Biosciences Memory MCP server via factory pattern...")
 
     # 1. Load configuration
     factory_config = GraphitiConfig()
@@ -280,11 +280,11 @@ async def create_server() -> FastMCP:
     client = await factory_graphiti_service.get_client()
     await factory_queue_service.initialize(client)
 
-    logger.info('Graphiti services initialized successfully via factory')
+    logger.info("Graphiti services initialized successfully via factory")
 
     # 3. Create Server Instance
     server = FastMCP(
-        'Biosciences Memory Server',
+        "Biosciences Memory Server",
         instructions=GRAPHITI_MCP_INSTRUCTIONS,
     )
 
@@ -292,15 +292,15 @@ async def create_server() -> FastMCP:
     _register_tools(server, factory_config, factory_graphiti_service, factory_queue_service)
 
     # 5. Register Custom Routes
-    @server.custom_route('/health', methods=['GET'])
+    @server.custom_route("/health", methods=["GET"])
     async def health_check(request):
-        return JSONResponse({'status': 'healthy', 'service': 'biosciences-memory'})
+        return JSONResponse({"status": "healthy", "service": "biosciences-memory"})
 
-    @server.custom_route('/status', methods=['GET'])
+    @server.custom_route("/status", methods=["GET"])
     async def status_check(request):
-        return JSONResponse({'status': 'ok', 'service': 'biosciences-memory'})
+        return JSONResponse({"status": "ok", "service": "biosciences-memory"})
 
-    logger.info('FastMCP server created with factory pattern')
+    logger.info("FastMCP server created with factory pattern")
     return server
 
 
@@ -317,8 +317,8 @@ def _register_tools(
         name: str,
         episode_body: str,
         group_id: str | None = None,
-        source: str = 'text',
-        source_description: str = '',
+        source: str = "text",
+        source_description: str = "",
         uuid: str | None = None,
     ) -> SuccessResponse | ErrorResponse:
         """Add an episode to memory. This is the primary way to add information to the graph.
@@ -384,8 +384,8 @@ def _register_tools(
                 message=f"Episode '{name}' queued for processing in group '{effective_group_id}'"
             )
         except Exception as e:
-            logger.error(f'Error queuing episode: {e}')
-            return ErrorResponse(error=f'Error queuing episode: {str(e)}')
+            logger.error(f"Error queuing episode: {e}")
+            return ErrorResponse(error=f"Error queuing episode: {str(e)}")
 
     @server.tool()
     async def search_nodes(
@@ -424,12 +424,12 @@ def _register_tools(
 
             nodes = results.nodes[:max_nodes] if results.nodes else []
             if not nodes:
-                return NodeSearchResponse(message='No relevant nodes found', nodes=[])
+                return NodeSearchResponse(message="No relevant nodes found", nodes=[])
 
             node_results = []
             for node in nodes:
-                attrs = node.attributes if hasattr(node, 'attributes') else {}
-                attrs = {k: v for k, v in attrs.items() if 'embedding' not in k.lower()}
+                attrs = node.attributes if hasattr(node, "attributes") else {}
+                attrs = {k: v for k, v in attrs.items() if "embedding" not in k.lower()}
 
                 node_results.append(
                     NodeResult(
@@ -443,10 +443,10 @@ def _register_tools(
                     )
                 )
 
-            return NodeSearchResponse(message='Nodes retrieved successfully', nodes=node_results)
+            return NodeSearchResponse(message="Nodes retrieved successfully", nodes=node_results)
         except Exception as e:
-            logger.error(f'Error searching nodes: {e}')
-            return ErrorResponse(error=f'Error searching nodes: {str(e)}')
+            logger.error(f"Error searching nodes: {e}")
+            return ErrorResponse(error=f"Error searching nodes: {str(e)}")
 
     @server.tool()
     async def search_memory_facts(
@@ -465,7 +465,7 @@ def _register_tools(
         """
         try:
             if max_facts <= 0:
-                return ErrorResponse(error='max_facts must be a positive integer')
+                return ErrorResponse(error="max_facts must be a positive integer")
 
             client = await graphiti_svc.get_client()
             effective_group_ids = (
@@ -484,13 +484,13 @@ def _register_tools(
             )
 
             if not relevant_edges:
-                return FactSearchResponse(message='No relevant facts found', facts=[])
+                return FactSearchResponse(message="No relevant facts found", facts=[])
 
             facts = [format_fact_result(edge) for edge in relevant_edges]
-            return FactSearchResponse(message='Facts retrieved successfully', facts=facts)
+            return FactSearchResponse(message="Facts retrieved successfully", facts=facts)
         except Exception as e:
-            logger.error(f'Error searching facts: {e}')
-            return ErrorResponse(error=f'Error searching facts: {str(e)}')
+            logger.error(f"Error searching facts: {e}")
+            return ErrorResponse(error=f"Error searching facts: {str(e)}")
 
     @server.tool()
     async def delete_entity_edge(uuid: str) -> SuccessResponse | ErrorResponse:
@@ -503,10 +503,10 @@ def _register_tools(
             client = await graphiti_svc.get_client()
             entity_edge = await EntityEdge.get_by_uuid(client.driver, uuid)
             await entity_edge.delete(client.driver)
-            return SuccessResponse(message=f'Entity edge with UUID {uuid} deleted successfully')
+            return SuccessResponse(message=f"Entity edge with UUID {uuid} deleted successfully")
         except Exception as e:
-            logger.error(f'Error deleting entity edge: {e}')
-            return ErrorResponse(error=f'Error deleting entity edge: {str(e)}')
+            logger.error(f"Error deleting entity edge: {e}")
+            return ErrorResponse(error=f"Error deleting entity edge: {str(e)}")
 
     @server.tool()
     async def delete_episode(uuid: str) -> SuccessResponse | ErrorResponse:
@@ -519,10 +519,10 @@ def _register_tools(
             client = await graphiti_svc.get_client()
             episodic_node = await EpisodicNode.get_by_uuid(client.driver, uuid)
             await episodic_node.delete(client.driver)
-            return SuccessResponse(message=f'Episode with UUID {uuid} deleted successfully')
+            return SuccessResponse(message=f"Episode with UUID {uuid} deleted successfully")
         except Exception as e:
-            logger.error(f'Error deleting episode: {e}')
-            return ErrorResponse(error=f'Error deleting episode: {str(e)}')
+            logger.error(f"Error deleting episode: {e}")
+            return ErrorResponse(error=f"Error deleting episode: {str(e)}")
 
     @server.tool()
     async def get_entity_edge(uuid: str) -> dict[str, Any] | ErrorResponse:
@@ -536,8 +536,8 @@ def _register_tools(
             entity_edge = await EntityEdge.get_by_uuid(client.driver, uuid)
             return format_fact_result(entity_edge)
         except Exception as e:
-            logger.error(f'Error getting entity edge: {e}')
-            return ErrorResponse(error=f'Error getting entity edge: {str(e)}')
+            logger.error(f"Error getting entity edge: {e}")
+            return ErrorResponse(error=f"Error getting entity edge: {str(e)}")
 
     @server.tool()
     async def get_episodes(
@@ -568,29 +568,29 @@ def _register_tools(
                 episodes = []
 
             if not episodes:
-                return EpisodeSearchResponse(message='No episodes found', episodes=[])
+                return EpisodeSearchResponse(message="No episodes found", episodes=[])
 
             episode_results = []
             for episode in episodes:
                 episode_dict = {
-                    'uuid': episode.uuid,
-                    'name': episode.name,
-                    'content': episode.content,
-                    'created_at': episode.created_at.isoformat() if episode.created_at else None,
-                    'source': episode.source.value
-                    if hasattr(episode.source, 'value')
+                    "uuid": episode.uuid,
+                    "name": episode.name,
+                    "content": episode.content,
+                    "created_at": episode.created_at.isoformat() if episode.created_at else None,
+                    "source": episode.source.value
+                    if hasattr(episode.source, "value")
                     else str(episode.source),
-                    'source_description': episode.source_description,
-                    'group_id': episode.group_id,
+                    "source_description": episode.source_description,
+                    "group_id": episode.group_id,
                 }
                 episode_results.append(episode_dict)
 
             return EpisodeSearchResponse(
-                message='Episodes retrieved successfully', episodes=episode_results
+                message="Episodes retrieved successfully", episodes=episode_results
             )
         except Exception as e:
-            logger.error(f'Error getting episodes: {e}')
-            return ErrorResponse(error=f'Error getting episodes: {str(e)}')
+            logger.error(f"Error getting episodes: {e}")
+            return ErrorResponse(error=f"Error getting episodes: {str(e)}")
 
     @server.tool()
     async def clear_graph(group_ids: list[str] | None = None) -> SuccessResponse | ErrorResponse:
@@ -606,15 +606,15 @@ def _register_tools(
             )
 
             if not effective_group_ids:
-                return ErrorResponse(error='No group IDs specified for clearing')
+                return ErrorResponse(error="No group IDs specified for clearing")
 
             await clear_data(client.driver, group_ids=effective_group_ids)
             return SuccessResponse(
-                message=f'Graph data cleared for group IDs: {", ".join(effective_group_ids)}'
+                message=f"Graph data cleared for group IDs: {', '.join(effective_group_ids)}"
             )
         except Exception as e:
-            logger.error(f'Error clearing graph: {e}')
-            return ErrorResponse(error=f'Error clearing graph: {str(e)}')
+            logger.error(f"Error clearing graph: {e}")
+            return ErrorResponse(error=f"Error clearing graph: {str(e)}")
 
     @server.tool()
     async def get_status() -> StatusResponse:
@@ -626,20 +626,20 @@ def _register_tools(
             client = await graphiti_svc.get_client()
             # Test database connection
             async with client.driver.session() as session:
-                result = await session.run('MATCH (n) RETURN count(n) as count')
+                result = await session.run("MATCH (n) RETURN count(n) as count")
                 if result:
                     _ = [record async for record in result]
 
             provider_name = cfg.database.provider
             return StatusResponse(
-                status='ok',
-                message=f'Graphiti MCP server is running and connected to {provider_name} database',
+                status="ok",
+                message=f"Graphiti MCP server is running and connected to {provider_name} database",
             )
         except Exception as e:
-            logger.error(f'Error checking database connection: {e}')
+            logger.error(f"Error checking database connection: {e}")
             return StatusResponse(
-                status='error',
-                message=f'Graphiti MCP server is running but database connection failed: {str(e)}',
+                status="error",
+                message=f"Graphiti MCP server is running but database connection failed: {str(e)}",
             )
 
 
@@ -654,18 +654,18 @@ async def run_local():
 
     server = await create_server()
 
-    parser = argparse.ArgumentParser(description='Run Biosciences Memory MCP server')
-    parser.add_argument('--host', default='0.0.0.0')
-    parser.add_argument('--port', type=int, default=8000)
-    parser.add_argument('--transport', choices=['http', 'stdio'], default='http')
+    parser = argparse.ArgumentParser(description="Run Biosciences Memory MCP server")
+    parser.add_argument("--host", default="0.0.0.0")
+    parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument("--transport", choices=["http", "stdio"], default="http")
     args, _ = parser.parse_known_args()
 
-    logger.info(f'Starting MCP server with {args.transport} transport on {args.host}:{args.port}')
+    logger.info(f"Starting MCP server with {args.transport} transport on {args.host}:{args.port}")
 
-    if args.transport == 'stdio':
+    if args.transport == "stdio":
         await server.run_stdio_async()
     else:
-        for logger_name in ['uvicorn', 'uvicorn.error', 'uvicorn.access']:
+        for logger_name in ["uvicorn", "uvicorn.error", "uvicorn.access"]:
             uvicorn_logger = logging.getLogger(logger_name)
             uvicorn_logger.handlers.clear()
             handler = logging.StreamHandler(sys.stderr)
@@ -676,11 +676,11 @@ async def run_local():
         await server.run_http_async(host=args.host, port=args.port)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     try:
         asyncio.run(run_local())
     except KeyboardInterrupt:
-        logger.info('Server shutting down...')
+        logger.info("Server shutting down...")
     except Exception as e:
-        logger.error(f'Fatal error: {str(e)}')
+        logger.error(f"Fatal error: {str(e)}")
         sys.exit(1)

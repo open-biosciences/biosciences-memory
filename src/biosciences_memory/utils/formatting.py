@@ -19,13 +19,13 @@ def format_node_result(node: EntityNode) -> dict[str, Any]:
         A dictionary representation of the node with serialized dates and excluded embeddings
     """
     result = node.model_dump(
-        mode='json',
+        mode="json",
         exclude={
-            'name_embedding',
+            "name_embedding",
         },
     )
     # Remove any embedding that might be in attributes
-    result.get('attributes', {}).pop('name_embedding', None)
+    result.get("attributes", {}).pop("name_embedding", None)
     return result
 
 
@@ -41,10 +41,10 @@ def format_fact_result(edge: EntityEdge) -> dict[str, Any]:
         A dictionary representation of the edge with serialized dates and excluded embeddings
     """
     result = edge.model_dump(
-        mode='json',
+        mode="json",
         exclude={
-            'fact_embedding',
+            "fact_embedding",
         },
     )
-    result.get('attributes', {}).pop('fact_embedding', None)
+    result.get("attributes", {}).pop("fact_embedding", None)
     return result

@@ -3,7 +3,7 @@
 import asyncio
 import logging
 from collections.abc import Awaitable, Callable
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from typing import Any
 
 logger = logging.getLogger(__name__)
@@ -52,7 +52,7 @@ class QueueService:
         This function runs as a long-lived task that processes episodes
         from the queue one at a time.
         """
-        logger.info(f'Starting episode queue worker for group_id: {group_id}')
+        logger.info(f"Starting episode queue worker for group_id: {group_id}")
         self._queue_workers[group_id] = True
 
         try:
@@ -66,18 +66,18 @@ class QueueService:
                     await process_func()
                 except Exception as e:
                     logger.error(
-                        f'Error processing queued episode for group_id {group_id}: {str(e)}'
+                        f"Error processing queued episode for group_id {group_id}: {str(e)}"
                     )
                 finally:
                     # Mark the task as done regardless of success/failure
                     self._episode_queues[group_id].task_done()
         except asyncio.CancelledError:
-            logger.info(f'Episode queue worker for group_id {group_id} was cancelled')
+            logger.info(f"Episode queue worker for group_id {group_id} was cancelled")
         except Exception as e:
-            logger.error(f'Unexpected error in queue worker for group_id {group_id}: {str(e)}')
+            logger.error(f"Unexpected error in queue worker for group_id {group_id}: {str(e)}")
         finally:
             self._queue_workers[group_id] = False
-            logger.info(f'Stopped episode queue worker for group_id: {group_id}')
+            logger.info(f"Stopped episode queue worker for group_id: {group_id}")
 
     def get_queue_size(self, group_id: str) -> int:
         """Get the current queue size for a group_id."""
@@ -96,7 +96,7 @@ class QueueService:
             graphiti_client: The graphiti client instance to use for processing episodes
         """
         self._graphiti_client = graphiti_client
-        logger.info('Queue service initialized with graphiti client')
+        logger.info("Queue service initialized with graphiti client")
 
     async def add_episode(
         self,
@@ -123,12 +123,12 @@ class QueueService:
             The position in the queue
         """
         if self._graphiti_client is None:
-            raise RuntimeError('Queue service not initialized. Call initialize() first.')
+            raise RuntimeError("Queue service not initialized. Call initialize() first.")
 
         async def process_episode():
             """Process the episode using the graphiti client."""
             try:
-                logger.info(f'Processing episode {uuid} for group {group_id}')
+                logger.info(f"Processing episode {uuid} for group {group_id}")
 
                 # Process the episode using the graphiti client
                 await self._graphiti_client.add_episode(
@@ -137,15 +137,15 @@ class QueueService:
                     source_description=source_description,
                     source=episode_type,
                     group_id=group_id,
-                    reference_time=datetime.now(timezone.utc),
+                    reference_time=datetime.now(UTC),
                     entity_types=entity_types,
                     uuid=uuid,
                 )
 
-                logger.info(f'Successfully processed episode {uuid} for group {group_id}')
+                logger.info(f"Successfully processed episode {uuid} for group {group_id}")
 
             except Exception as e:
-                logger.error(f'Failed to process episode {uuid} for group {group_id}: {str(e)}')
+                logger.error(f"Failed to process episode {uuid} for group {group_id}: {str(e)}")
                 raise
 
         # Use the existing add_episode_task method to queue the processing

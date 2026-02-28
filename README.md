@@ -1,10 +1,58 @@
 # biosciences-memory
 
-Graphiti + Neo4j knowledge graph persistence layer for the [Open Biosciences](https://github.com/open-biosciences) platform. Manages entity resolution, graph schemas, and namespace policies across cloud and local Neo4j environments.
+Graphiti knowledge graph memory layer for the [Open Biosciences](https://github.com/open-biosciences) platform. Curated migration of graphiti-fastmcp into an OpenAI + Neo4j only package with biosciences domain entity types.
 
-## Status
+## Architecture
 
-**Wave 2 (Platform) complete.** Configuration files (`.mcp.json`, `.env.example`) are in place and the 5 MCP server connections are operational. Full graphiti-fastmcp server code migration is scheduled for Wave 4.
+Factory-pattern FastMCP server with:
+
+- **9 MCP tools**: `add_memory`, `search_nodes`, `search_memory_facts`, `get_episodes`, `get_entity_edge`, `delete_entity_edge`, `delete_episode`, `clear_graph`, `get_status`
+- **Async queue-based episode processing** — sequential per `group_id`, parallel across groups
+- **Pydantic-Settings config** with YAML + env var expansion
+- **Custom Neo4j driver** for Aura connection pool management
+- **Both factory (FastMCP Cloud) and CLI entry points**
+- **14 entity types** — 9 generic + 5 biosciences: Gene, Protein, Drug, Disease, Pathway
+- **5 edge types** with `edge_type_map` for domain relationships
+
+## Installation
+
+```bash
+uv sync                    # Install dependencies
+uv sync --extra dev        # Install with dev dependencies
+```
+
+## Running the Server
+
+```bash
+# Factory mode (FastMCP Cloud compatible)
+uv run python -m biosciences_memory.server
+
+# CLI mode with YAML config
+uv run python -m biosciences_memory.cli --config config/config.yaml
+
+# CLI with overrides
+uv run python -m biosciences_memory.cli --model gpt-4.1 --group-id my-project
+```
+
+## Running Tests
+
+```bash
+uv run pytest -m unit -v           # Unit tests (no external deps)
+uv run pytest -m integration -v    # Integration tests
+uv run pytest -v                   # All tests
+```
+
+## Configuration
+
+The `config.yaml` file supports `${VAR:default}` env var expansion. Configuration priority is:
+
+**CLI > env vars > YAML > defaults**
+
+Copy `.env.example` to `.env` and fill in credentials:
+
+```bash
+cp .env.example .env
+```
 
 ## MCP Server Connections
 
@@ -26,50 +74,14 @@ The free-tier Neo4j Aura instance is at capacity (~5k nodes). This is a known, a
 - **No new writes to Aura** — use `graphiti-docker` for all new memory episodes
 - All new data goes to the local Docker Neo4j instance
 
-### Dual Environment
+## Design References
 
-| Environment | Use Case | Active Connections |
-|-------------|----------|--------------------|
-| Neo4j Aura (cloud) | Historical read access | graphiti-aura, neo4j-aura-management, neo4j-aura-cypher |
-| Neo4j Docker (local) | All new writes, active development | graphiti-docker, neo4j-docker-cypher |
-
-## Environment Setup
-
-Copy `.env.example` to `.env` and fill in credentials:
-
-```bash
-cp .env.example .env
-```
-
-Required variables:
-
-```bash
-# Neo4j Aura (cloud — for reads)
-NEO4J_URI=neo4j+s://your-instance-id.databases.neo4j.io
-NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=...
-NEO4J_AURA_CLIENT_ID=...
-NEO4J_AURA_CLIENT_SECRET=...
-
-# LLM
-OPENAI_API_KEY=...
-
-# External APIs
-BIOGRID_API_KEY=...
-NCBI_API_KEY=...
-```
-
-## What Wave 4 Will Add
-
-Wave 4 will migrate the `graphiti-fastmcp` predecessor service into this repo as the `biosciences_memory` Python package:
-
-- **GraphitiFastMCP server** — FastMCP Cloud-compatible entrypoint
-- **Queue service** — sequential per-group episode processing to prevent race conditions
-- **Config schema** — multi-source config: env vars, YAML, CLI, defaults
-- **Entity models** — domain-specific Pydantic v2 models for biosciences entities
-- **Test suite** — unit, integration, and e2e tests (pytest marker-based)
-
-Before migration, the predecessor at `graphiti-fastmcp` needs alignment to hatchling build backend, ruff config, and platform pytest marker conventions.
+- **Graphiti Custom Entity and Edge Types**: https://help.getzep.com/graphiti/core-concepts/custom-entity-and-edge-types — Pattern for defining domain-specific Pydantic entity and edge types with edge_type_map for relationship constraints
+- **Graphiti Graph Namespacing**: https://help.getzep.com/graphiti/core-concepts/graph-namespacing — group_id-based namespace isolation for multi-tenant knowledge graphs
+- **Graphiti Communities**: https://help.getzep.com/graphiti/core-concepts/communities — Leiden algorithm community detection for entity clustering
+- **FastMCP Testing Patterns**: https://gofastmcp.com/patterns/testing — In-memory Client(server) pattern for pytest-asyncio MCP tool testing
+- **FastMCP Test Organization**: https://gofastmcp.com/development/tests — Test structure and async fixture patterns
+- **Neo4j Python Driver Pool Config**: https://github.com/neo4j/neo4j-python-driver/issues/316 — Connection pool tuning for Aura cloud idle timeouts
 
 ## Agent Ownership
 
@@ -87,8 +99,8 @@ Maintained by the **Memory Engineer** (Agent 4). See [AGENTS.md](https://github.
 
 | Wave | Status | Scope |
 |------|--------|-------|
-| 2 — Platform | ✅ Complete | `.mcp.json`, `.env.example`, 5 MCP connections |
-| 4 — Validation | ⬜ Not Started | graphiti-fastmcp code → `biosciences_memory` package |
+| 2 — Platform | Complete | .mcp.json, .env.example, 5 MCP connections |
+| 4 — Validation | Complete | graphiti-fastmcp code migrated to biosciences_memory package |
 
 ## License
 

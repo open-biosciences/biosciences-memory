@@ -23,11 +23,11 @@ class Requirement(BaseModel):
 
     project_name: str = Field(
         ...,
-        description='The name of the project to which the requirement belongs.',
+        description="The name of the project to which the requirement belongs.",
     )
     description: str = Field(
         ...,
-        description='Description of the requirement. Only use information mentioned in the context to write this description.',
+        description="Description of the requirement. Only use information mentioned in the context to write this description.",
     )
 
 
@@ -60,7 +60,7 @@ class Procedure(BaseModel):
 
     description: str = Field(
         ...,
-        description='Brief description of the procedure. Only use information mentioned in the context to write this description.',
+        description="Brief description of the procedure. Only use information mentioned in the context to write this description.",
     )
 
 
@@ -82,11 +82,11 @@ class Location(BaseModel):
 
     name: str = Field(
         ...,
-        description='The name or identifier of the location',
+        description="The name or identifier of the location",
     )
     description: str = Field(
         ...,
-        description='Brief description of the location and its significance. Only use information mentioned in the context.',
+        description="Brief description of the location and its significance. Only use information mentioned in the context.",
     )
 
 
@@ -106,11 +106,11 @@ class Event(BaseModel):
 
     name: str = Field(
         ...,
-        description='The name or title of the event',
+        description="The name or title of the event",
     )
     description: str = Field(
         ...,
-        description='Brief description of the event. Only use information mentioned in the context.',
+        description="Brief description of the event. Only use information mentioned in the context.",
     )
 
 
@@ -132,11 +132,11 @@ class Object(BaseModel):
 
     name: str = Field(
         ...,
-        description='The name or identifier of the object',
+        description="The name or identifier of the object",
     )
     description: str = Field(
         ...,
-        description='Brief description of the object. Only use information mentioned in the context.',
+        description="Brief description of the object. Only use information mentioned in the context.",
     )
 
 
@@ -158,11 +158,11 @@ class Topic(BaseModel):
 
     name: str = Field(
         ...,
-        description='The name or identifier of the topic',
+        description="The name or identifier of the topic",
     )
     description: str = Field(
         ...,
-        description='Brief description of the topic and its context. Only use information mentioned in the context.',
+        description="Brief description of the topic and its context. Only use information mentioned in the context.",
     )
 
 
@@ -181,11 +181,11 @@ class Organization(BaseModel):
 
     name: str = Field(
         ...,
-        description='The name of the organization',
+        description="The name of the organization",
     )
     description: str = Field(
         ...,
-        description='Brief description of the organization. Only use information mentioned in the context.',
+        description="Brief description of the organization. Only use information mentioned in the context.",
     )
 
 
@@ -204,11 +204,11 @@ class Document(BaseModel):
 
     title: str = Field(
         ...,
-        description='The title or identifier of the document',
+        description="The title or identifier of the document",
     )
     description: str = Field(
         ...,
-        description='Brief description of the document and its content. Only use information mentioned in the context.',
+        description="Brief description of the document and its content. Only use information mentioned in the context.",
     )
 
 
