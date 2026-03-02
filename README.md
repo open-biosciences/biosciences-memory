@@ -91,7 +91,7 @@ Maintained by the **Memory Engineer** (Agent 4). See [AGENTS.md](https://github.
 
 | Direction | Repository | Relationship |
 |-----------|------------|--------------|
-| Upstream | [biosciences-architecture](https://github.com/open-biosciences/biosciences-architecture) | ADRs and schemas |
+| Upstream | [biosciences-program](https://github.com/open-biosciences/biosciences-program) | ADRs and schemas |
 | Downstream | [biosciences-research](https://github.com/open-biosciences/biosciences-research) | Persists research results to knowledge graph |
 | Downstream | [biosciences-deepagents](https://github.com/open-biosciences/biosciences-deepagents) | PERSIST phase writes to knowledge graph |
 
