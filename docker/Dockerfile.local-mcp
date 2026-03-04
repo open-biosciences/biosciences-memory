@@ -1,0 +1,56 @@
+# syntax=docker/dockerfile:1
+# Dockerfile for Local MCP Server (src/server.py - FastMCP-based)
+
+FROM python:3.11-slim-bookworm
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl \
+    ca-certificates \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install uv for Python package management
+ADD https://astral.sh/uv/install.sh /uv-installer.sh
+RUN sh /uv-installer.sh && rm /uv-installer.sh
+
+# Add uv to PATH
+ENV PATH="/root/.local/bin:${PATH}"
+
+# Configure uv for optimal Docker usage
+ENV UV_COMPILE_BYTECODE=1 \
+    UV_LINK_MODE=copy \
+    UV_PYTHON_DOWNLOADS=never \
+    PYTHONUNBUFFERED=1
+
+# Set up application directory
+WORKDIR /app
+
+# Copy dependency files
+COPY pyproject.toml uv.lock ./
+
+# Install dependencies
+RUN --mount=type=cache,target=/root/.cache/uv \
+    uv sync
+
+# Copy application code
+COPY src/ ./src/
+COPY config/ ./config/
+
+# Create log directory
+RUN mkdir -p /var/log/graphiti
+
+# Add metadata labels
+LABEL org.opencontainers.image.title="Biosciences Memory MCP Server (Local)" \
+    org.opencontainers.image.description="Biosciences Memory MCP Server" \
+    maintainer="Don Branson"
+
+# Expose MCP server port
+EXPOSE 8003
+
+# Health check
+HEALTHCHECK --interval=10s --timeout=5s --start-period=30s --retries=3 \
+    CMD curl -f http://localhost:8003/health || exit 1
+
+# Run YOUR FastMCP server
+CMD ["uv", "run", "--no-sync", "src/biosciences_memory/server.py"]

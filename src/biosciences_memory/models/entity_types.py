@@ -80,7 +80,7 @@ class Location(BaseModel):
     7. Note any significant activities or events associated with the location
     """
 
-    name: str = Field(
+    location_name: str = Field(
         ...,
         description="The name or identifier of the location",
     )
@@ -104,7 +104,7 @@ class Event(BaseModel):
     8. Extract both recurring events and one-time occurrences
     """
 
-    name: str = Field(
+    event_name: str = Field(
         ...,
         description="The name or title of the event",
     )
@@ -130,7 +130,7 @@ class Object(BaseModel):
     7. Avoid extracting objects that are better classified as Documents or other types
     """
 
-    name: str = Field(
+    object_name: str = Field(
         ...,
         description="The name or identifier of the object",
     )
@@ -156,7 +156,7 @@ class Topic(BaseModel):
     7. Avoid extracting topics that are better classified as Events, Documents, or Organizations
     """
 
-    name: str = Field(
+    topic_name: str = Field(
         ...,
         description="The name or identifier of the topic",
     )
@@ -179,7 +179,7 @@ class Organization(BaseModel):
     7. Extract both large entities and small groups if formally organized
     """
 
-    name: str = Field(
+    organization_name: str = Field(
         ...,
         description="The name of the organization",
     )
@@ -240,7 +240,7 @@ class Protein(BaseModel):
     """
 
     uniprot_id: str | None = Field(None, description="UniProt accession (e.g., P38398)")
-    name: str | None = Field(None, description="Protein name")
+    protein_name: str | None = Field(None, description="Protein name")
 
 
 class Drug(BaseModel):
@@ -253,7 +253,7 @@ class Drug(BaseModel):
     """
 
     chembl_id: str | None = Field(None, description="ChEMBL compound ID (e.g., CHEMBL25)")
-    name: str | None = Field(None, description="Drug or compound name")
+    drug_name: str | None = Field(None, description="Drug or compound name")
     phase: int | None = Field(None, description="Clinical trial phase (1-4)")
 
 
@@ -266,7 +266,7 @@ class Disease(BaseModel):
     3. Capture prevalence, symptoms, and classification when mentioned
     """
 
-    name: str | None = Field(None, description="Disease name")
+    disease_name: str | None = Field(None, description="Disease name")
     mondo_id: str | None = Field(None, description="MONDO disease ontology ID")
 
 
@@ -279,7 +279,7 @@ class Pathway(BaseModel):
     3. Capture pathway components (genes, proteins) when referenced
     """
 
-    name: str | None = Field(None, description="Pathway name")
+    pathway_name: str | None = Field(None, description="Pathway name")
     wikipathways_id: str | None = Field(None, description="WikiPathways ID (e.g., WP534)")
 
 

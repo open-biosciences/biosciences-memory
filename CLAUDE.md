@@ -1,98 +1,105 @@
 # CLAUDE.md — biosciences-memory
 
 ## Purpose
+Knowledge graph persistence layer using Graphiti and Neo4j. This repository is owned by the **Memory Engineer (Agent 4)** and serves as the long-term memory layer for the Open Biosciences platform.
 
-Knowledge graph persistence layer using Graphiti, Neo4j, and Qdrant. This repo is owned by the **Memory Engineer** agent.
+## Local Environment (Docker-First)
+The project is configured to run primarily in a containerized environment to ensure consistency and avoid conflicts with local Neo4j installations.
 
-## MCP Server Connections
+### Port Mappings (Host Access)
+| Service | Protocol | Host URL | Container Port | Purpose |
+| :--- | :--- | :--- | :--- | :--- |
+| **Memory MCP** | HTTP | `http://localhost:8007` | 8003 | Graphiti Logic & MCP Tools |
+| **Cypher MCP** | HTTP | `http://localhost:8008` | 8005 | Direct Neo4j Query Tool |
+| **Neo4j Bolt** | Bolt | `bolt://localhost:7688` | 7687 | Database Binary Connection |
+| **Neo4j UI** | HTTP | `http://localhost:7475` | 7474 | Database Browser UI |
 
-This repo's `.mcp.json` defines 5 MCP server connections for graph operations:
-
-| Connection | Transport | Endpoint | Purpose |
-|------------|-----------|----------|---------|
-| `graphiti-aura` | stdio | `/home/donbr/graphiti-fastmcp/scripts/run_mcp_server.sh` | Graphiti FastMCP for Neo4j Aura |
-| `neo4j-aura-management` | HTTP | `:8004` | Neo4j Aura instance management |
-| `neo4j-aura-cypher` | HTTP | `:8003` | Direct Cypher queries on Aura |
-| `graphiti-docker` | HTTP | `:8002` | Graphiti FastMCP for local Docker |
-| `neo4j-docker-cypher` | HTTP | `:8005` | Direct Cypher on local Docker |
-
-## Dual Environment
-
-| Environment | Use Case | Config |
-|-------------|----------|--------|
-| **Neo4j Aura** (cloud) | Production graph database | `NEO4J_URI`, `NEO4J_USERNAME`, `NEO4J_PASSWORD` |
-| **Neo4j Docker** (local) | Development and testing | `docker-compose.yml` |
-
-## Environment Variables
-
-Required (documented in `.env.example`):
-
-```bash
-# Neo4j Aura (cloud)
-NEO4J_URI=neo4j+s://...
-NEO4J_USERNAME=neo4j
-NEO4J_PASSWORD=...
-
-# Neo4j Aura API
-NEO4J_AURA_CLIENT_ID=...
-NEO4J_AURA_CLIENT_SECRET=...
-
-# External APIs
-BIOGRID_API_KEY=...
-NCBI_API_KEY=...
-
-# LLM
-OPENAI_API_KEY=...
-
-# FastMCP Cloud
-FASTMCP_CLOUD_ENDPOINT=...
-```
-
-## Namespace Policies
-
-- Graph entities use canonical CURIEs from ADR-001 §5 (e.g., `HGNC:1100`, `UniProtKB:P38398`)
-- Namespace isolation between research projects via graph labels
-- Entity deduplication uses cross-reference matching
-
-## Dependencies
-
-- **Upstream**: `biosciences-architecture` (schema definitions)
-- **Downstream**: `biosciences-research` (graph persistence), `biosciences-deepagents` (PERSIST phase)
+---
 
 ## Development Commands
 
+### Orchestration
 ```bash
 uv sync                          # Install dependencies
+docker compose up -d             # Start full stack (Neo4j + 2 MCPs)
+docker compose logs -f           # Follow logs
+docker compose down              # Stop containers (preserves data)
+docker compose down -v           # Stop and WIPE data
 
-# Verify MCP connections
-# (start relevant MCP servers first)
 ```
 
-## FastMCP Server (graphiti-fastmcp)
+### Manual/Local Run
 
-The MCP server powering this repo's graph connections lives at `/home/donbr/graphiti-fastmcp`
-(v1.0.1). It will be curated and migrated into this repo during **Wave 4** (after Wave 3
-orchestration completes), ensuring domain-specific schemas reflect actual deepagents/temporal
-usage patterns. Until then, it runs as an external service via `.mcp.json`.
+Uses host `.env` settings. Always use the module flag to ensure correct relative imports.
 
-**Key architectural patterns:**
+```bash
+uv run python -m biosciences_memory.server
 
-| Component | Purpose |
-|-----------|---------|
-| `src/server.py` (factory pattern) | FastMCP Cloud-compatible entrypoint |
-| `src/services/queue_service.py` | Sequential per-group episode processing (prevents race conditions) |
-| `src/config/schema.py` | Multi-source config: env vars → YAML → CLI → defaults |
-| `src/services/factories.py` | Swappable LLM, embedder, and database providers |
+```
 
-**MCP tools exposed**: `add_memory`, `search_nodes`, `search_memory_facts`, `get_episodes`,
-`get_entity_edge`, `delete_entity_edge`, `delete_episode`, `clear_graph`, `get_status`
+---
 
-**Curation needed before migration**: align to hatchling build backend, ruff config, pytest
-markers (`unit`/`integration`/`e2e`), and update graphiti-core version pinning.
+## Environment Variables
 
-## Conventions
+The project uses a `.env` file for local development. Note that `docker-compose.yml` overrides some of these for internal container networking.
 
-- Python >=3.11, uv, hatchling, ruff, pyright
-- Pydantic v2 for all models
-- httpx for async HTTP
-- pytest with marker-based test organization
+```bash
+# Neo4j Connection (Host-side for scripts/tests)
+NEO4J_URI=bolt://localhost:7688
+NEO4J_USER=neo4j
+NEO4J_PASSWORD=demodemo
+
+# OpenAI (Required for extraction)
+OPENAI_API_KEY=sk-...
+
+# Application Defaults
+GRAPHITI_GROUP_ID=main
+SEMAPHORE_LIMIT=10
+
+```
+
+---
+
+## MCP Client Configuration (`.mcp.json`)
+
+Ensure your local MCP client (e.g., Claude Desktop) is aligned with the Docker host ports:
+
+```json
+{
+  "mcpServers": {
+    "biosciences-neo4j-cypher": {
+      "type": "http",
+      "url": "http://localhost:8008/mcp/"
+    },
+    "biosciences-graphiti": {
+      "type": "http",
+      "url": "http://localhost:8007/mcp/"
+    }
+  }
+}
+
+```
+
+---
+
+## Core Architecture Patterns
+
+| Component | Location | Pattern |
+| --- | --- | --- |
+| **Server** | `src/biosciences_memory/server.py` | FastMCP Factory Pattern |
+| **Queueing** | `src/biosciences_memory/services/queue_service.py` | Sequential per-group processing |
+| **Config** | `src/biosciences_memory/config/schema.py` | Pydantic-Settings with YAML expansion |
+| **Models** | `src/biosciences_memory/models/entity_types.py` | Domain-specific entity/edge definitions |
+
+---
+
+## Conventions & Maintenance
+
+* **Python**: >=3.11, uv, hatchling, ruff, pyright.
+* **Database**: Neo4j 5.x with **APOC** (required for Graphiti).
+* **Namespacing**: Entities use canonical CURIEs (e.g., `HGNC:1100`). Use `group_id` for project/research isolation.
+* **Testing**: Use `pytest -m unit` for logic and `pytest -m integration` for Neo4j-dependent tests.
+* **Migration**: This project has been migrated from an external script model to a self-contained package.
+* **Port Note**: Port 8005 is often pre-allocated on local machines; host mapping is moved to **8008** for Cypher to avoid collisions.
+
+**MCP Tools Exposed**: `add_memory`, `search_nodes`, `search_memory_facts`, `get_episodes`, `get_entity_edge`, `delete_entity_edge`, `delete_episode`, `clear_graph`, `get_status`.

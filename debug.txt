@@ -1,0 +1,856 @@
+2026-03-04 13:07:17.543 |    Building biosciences-memory @ file:///app
+2026-03-04 13:07:18.130 |       Built biosciences-memory @ file:///app
+2026-03-04 13:07:18.133 | Uninstalled 1 package in 1ms
+2026-03-04 13:07:18.134 | Installed 1 package in 1ms
+2026-03-04 13:07:18.549 | Bytecode compiled 4987 files in 414ms
+2026-03-04 13:07:19.863 | /app/.venv/lib/python3.11/site-packages/graphiti_core/driver/search_interface/search_interface.py:22: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+2026-03-04 13:07:19.863 |   class SearchInterface(BaseModel):
+2026-03-04 13:07:19.938 | 2026-03-04 21:07:19 - __main__ - INFO - Initializing Biosciences Memory MCP server via factory pattern...
+2026-03-04 13:07:19.940 | 2026-03-04 21:07:19 - biosciences_memory.services.factories - INFO - Creating OpenAI client
+2026-03-04 13:07:19.966 | 2026-03-04 21:07:19 - biosciences_memory.services.factories - INFO - Creating OpenAI Embedder client
+2026-03-04 13:07:19.980 | 2026-03-04 21:07:19 - __main__ - INFO - Created Neo4j driver with pool config: max_lifetime=300s, pool_size=50, acquisition_timeout=60.0s
+2026-03-04 13:07:20.683 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX relation_uuid IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.uuid)' has no effect. The index or constraint specified by 'RANGE INDEX relation_uuid FOR ()-[e:RELATES_TO]-() ON (e.uuid)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX relation_uuid IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.uuid)'
+2026-03-04 13:07:20.683 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX community_uuid IF NOT EXISTS FOR (e:Community) ON (e.uuid)' has no effect. The index or constraint specified by 'RANGE INDEX community_uuid FOR (e:Community) ON (e.uuid)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX community_uuid IF NOT EXISTS FOR (n:Community) ON (n.uuid)'
+2026-03-04 13:07:20.684 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX entity_uuid IF NOT EXISTS FOR (e:Entity) ON (e.uuid)' has no effect. The index or constraint specified by 'RANGE INDEX entity_uuid FOR (e:Entity) ON (e.uuid)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX entity_uuid IF NOT EXISTS FOR (n:Entity) ON (n.uuid)'
+2026-03-04 13:07:20.684 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX episode_uuid IF NOT EXISTS FOR (e:Episodic) ON (e.uuid)' has no effect. The index or constraint specified by 'RANGE INDEX episode_uuid FOR (e:Episodic) ON (e.uuid)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX episode_uuid IF NOT EXISTS FOR (n:Episodic) ON (n.uuid)'
+2026-03-04 13:07:20.684 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX mention_uuid IF NOT EXISTS FOR ()-[e:MENTIONS]-() ON (e.uuid)' has no effect. The index or constraint specified by 'RANGE INDEX mention_uuid FOR ()-[e:MENTIONS]-() ON (e.uuid)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX mention_uuid IF NOT EXISTS FOR ()-[e:MENTIONS]-() ON (e.uuid)'
+2026-03-04 13:07:20.684 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX has_member_uuid IF NOT EXISTS FOR ()-[e:HAS_MEMBER]-() ON (e.uuid)' has no effect. The index or constraint specified by 'RANGE INDEX has_member_uuid FOR ()-[e:HAS_MEMBER]-() ON (e.uuid)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX has_member_uuid IF NOT EXISTS FOR ()-[e:HAS_MEMBER]-() ON (e.uuid)'
+2026-03-04 13:07:20.685 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX entity_group_id IF NOT EXISTS FOR (e:Entity) ON (e.group_id)' has no effect. The index or constraint specified by 'RANGE INDEX entity_group_id FOR (e:Entity) ON (e.group_id)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX entity_group_id IF NOT EXISTS FOR (n:Entity) ON (n.group_id)'
+2026-03-04 13:07:20.685 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX relation_group_id IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.group_id)' has no effect. The index or constraint specified by 'RANGE INDEX relation_group_id FOR ()-[e:RELATES_TO]-() ON (e.group_id)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX relation_group_id IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.group_id)'
+2026-03-04 13:07:20.685 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX episode_group_id IF NOT EXISTS FOR (e:Episodic) ON (e.group_id)' has no effect. The index or constraint specified by 'RANGE INDEX episode_group_id FOR (e:Episodic) ON (e.group_id)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX episode_group_id IF NOT EXISTS FOR (n:Episodic) ON (n.group_id)'
+2026-03-04 13:07:20.685 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX community_group_id IF NOT EXISTS FOR (e:Community) ON (e.group_id)' has no effect. The index or constraint specified by 'RANGE INDEX community_group_id FOR (e:Community) ON (e.group_id)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX community_group_id IF NOT EXISTS FOR (n:Community) ON (n.group_id)'
+2026-03-04 13:07:20.712 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX valid_at_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.valid_at)' has no effect. The index or constraint specified by 'RANGE INDEX valid_at_edge_index FOR ()-[e:RELATES_TO]-() ON (e.valid_at)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX valid_at_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.valid_at)'
+2026-03-04 13:07:20.712 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX expired_at_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.expired_at)' has no effect. The index or constraint specified by 'RANGE INDEX expired_at_edge_index FOR ()-[e:RELATES_TO]-() ON (e.expired_at)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX expired_at_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.expired_at)'
+2026-03-04 13:07:20.713 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX created_at_entity_index IF NOT EXISTS FOR (e:Entity) ON (e.created_at)' has no effect. The index or constraint specified by 'RANGE INDEX created_at_entity_index FOR (e:Entity) ON (e.created_at)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX created_at_entity_index IF NOT EXISTS FOR (n:Entity) ON (n.created_at)'
+2026-03-04 13:07:20.713 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX name_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.name)' has no effect. The index or constraint specified by 'RANGE INDEX name_edge_index FOR ()-[e:RELATES_TO]-() ON (e.name)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX name_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.name)'
+2026-03-04 13:07:20.714 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX valid_at_episodic_index IF NOT EXISTS FOR (e:Episodic) ON (e.valid_at)' has no effect. The index or constraint specified by 'RANGE INDEX valid_at_episodic_index FOR (e:Episodic) ON (e.valid_at)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX valid_at_episodic_index IF NOT EXISTS FOR (n:Episodic) ON (n.valid_at)'
+2026-03-04 13:07:20.714 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX created_at_episodic_index IF NOT EXISTS FOR (e:Episodic) ON (e.created_at)' has no effect. The index or constraint specified by 'RANGE INDEX created_at_episodic_index FOR (e:Episodic) ON (e.created_at)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX created_at_episodic_index IF NOT EXISTS FOR (n:Episodic) ON (n.created_at)'
+2026-03-04 13:07:20.714 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX name_entity_index IF NOT EXISTS FOR (e:Entity) ON (e.name)' has no effect. The index or constraint specified by 'RANGE INDEX name_entity_index FOR (e:Entity) ON (e.name)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX name_entity_index IF NOT EXISTS FOR (n:Entity) ON (n.name)'
+2026-03-04 13:07:20.715 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX created_at_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.created_at)' has no effect. The index or constraint specified by 'RANGE INDEX created_at_edge_index FOR ()-[e:RELATES_TO]-() ON (e.created_at)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX created_at_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.created_at)'
+2026-03-04 13:07:20.716 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX invalid_at_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.invalid_at)' has no effect. The index or constraint specified by 'RANGE INDEX invalid_at_edge_index FOR ()-[e:RELATES_TO]-() ON (e.invalid_at)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX invalid_at_edge_index IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON (e.invalid_at)'
+2026-03-04 13:07:20.716 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE RANGE INDEX mention_group_id IF NOT EXISTS FOR ()-[e:MENTIONS]-() ON (e.group_id)' has no effect. The index or constraint specified by 'RANGE INDEX mention_group_id FOR ()-[e:MENTIONS]-() ON (e.group_id)' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE INDEX mention_group_id IF NOT EXISTS FOR ()-[e:MENTIONS]-() ON (e.group_id)'
+2026-03-04 13:07:20.749 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE FULLTEXT INDEX node_name_and_summary IF NOT EXISTS FOR (e:Entity) ON EACH [e.name, e.summary, e.group_id]' has no effect. The index or constraint specified by 'FULLTEXT INDEX node_name_and_summary FOR (e:Entity) ON EACH [e.name, e.summary, e.group_id]' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE FULLTEXT INDEX node_name_and_summary IF NOT EXISTS\n        FOR (n:Entity) ON EACH [n.name, n.summary, n.group_id]'
+2026-03-04 13:07:20.750 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE FULLTEXT INDEX community_name IF NOT EXISTS FOR (e:Community) ON EACH [e.name, e.group_id]' has no effect. The index or constraint specified by 'FULLTEXT INDEX community_name FOR (e:Community) ON EACH [e.name, e.group_id]' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE FULLTEXT INDEX community_name IF NOT EXISTS\n        FOR (n:Community) ON EACH [n.name, n.group_id]'
+2026-03-04 13:07:20.750 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE FULLTEXT INDEX episode_content IF NOT EXISTS FOR (e:Episodic) ON EACH [e.content, e.source, e.source_description, e.group_id]' has no effect. The index or constraint specified by 'FULLTEXT INDEX episode_content FOR (e:Episodic) ON EACH [e.content, e.source, e.source_description, e.group_id]' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE FULLTEXT INDEX episode_content IF NOT EXISTS\n        FOR (e:Episodic) ON EACH [e.content, e.source, e.source_description, e.group_id]'
+2026-03-04 13:07:20.750 | 2026-03-04 21:07:20 - neo4j.notifications - INFO - Received notification from DBMS server: <GqlStatusObject gql_status='00NA0', status_description="note: successful completion - index or constraint already exists. The command 'CREATE FULLTEXT INDEX edge_name_and_fact IF NOT EXISTS FOR ()-[e:RELATES_TO]-() ON EACH [e.name, e.fact, e.group_id]' has no effect. The index or constraint specified by 'FULLTEXT INDEX edge_name_and_fact FOR ()-[e:RELATES_TO]-() ON EACH [e.name, e.fact, e.group_id]' already exists.", position=None, raw_classification='SCHEMA', classification=<NotificationClassification.SCHEMA: 'SCHEMA'>, raw_severity='INFORMATION', severity=<NotificationSeverity.INFORMATION: 'INFORMATION'>, diagnostic_record={'_classification': 'SCHEMA', '_severity': 'INFORMATION', 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CREATE FULLTEXT INDEX edge_name_and_fact IF NOT EXISTS\n        FOR ()-[e:RELATES_TO]-() ON EACH [e.name, e.fact, e.group_id]'
+2026-03-04 13:07:20.751 | 2026-03-04 21:07:20 - __main__ - INFO - Successfully initialized Graphiti client
+2026-03-04 13:07:20.751 | 2026-03-04 21:07:20 - biosciences_memory.services.queue_service - INFO - Queue service initialized with graphiti client
+2026-03-04 13:07:20.751 | 2026-03-04 21:07:20 - __main__ - INFO - Graphiti services initialized successfully via factory
+2026-03-04 13:07:20.771 | 2026-03-04 21:07:20 - __main__ - INFO - FastMCP server created with factory pattern
+2026-03-04 13:07:20.772 | 2026-03-04 21:07:20 - __main__ - INFO - Starting MCP server with http transport on 0.0.0.0:8003
+2026-03-04 13:07:20.840 | 2026-03-04 21:07:20 - httpx - INFO - HTTP Request: GET https://pypi.org/pypi/fastmcp/json "HTTP/1.1 200 OK"
+2026-03-04 13:07:20.850 | 
+2026-03-04 13:07:20.850 | 
+2026-03-04 13:07:20.850 | ╭──────────────────────────────────────────────────────────────────────────────╮
+2026-03-04 13:07:20.850 | │                                                                              │
+2026-03-04 13:07:20.850 | │                                                                              │
+2026-03-04 13:07:20.850 | │                         ▄▀▀ ▄▀█ █▀▀ ▀█▀ █▀▄▀█ █▀▀ █▀█                        │
+2026-03-04 13:07:20.850 | │                         █▀  █▀█ ▄▄█  █  █ ▀ █ █▄▄ █▀▀                        │
+2026-03-04 13:07:20.850 | │                                                                              │
+2026-03-04 13:07:20.850 | │                                                                              │
+2026-03-04 13:07:20.850 | │                                FastMCP 2.14.5                                │
+2026-03-04 13:07:20.850 | │                            https://gofastmcp.com                             │
+2026-03-04 13:07:20.850 | │                                                                              │
+2026-03-04 13:07:20.850 | │                  🖥  Server:      Biosciences Memory Server                   │
+2026-03-04 13:07:20.850 | │                  🚀 Deploy free: https://fastmcp.cloud                       │
+2026-03-04 13:07:20.850 | │                                                                              │
+2026-03-04 13:07:20.850 | ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-03-04 13:07:20.850 | ╭──────────────────────────────────────────────────────────────────────────────╮
+2026-03-04 13:07:20.850 | │                          ✨ FastMCP 3.0 is coming!                           │
+2026-03-04 13:07:20.850 | │       Pin `fastmcp < 3` in production, then upgrade when you're ready.       │
+2026-03-04 13:07:20.850 | ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-03-04 13:07:20.850 | ╭──────────────────────────────────────────────────────────────────────────────╮
+2026-03-04 13:07:20.850 | │                          🎉 Update available: 3.1.0                          │
+2026-03-04 13:07:20.850 | │                      Run: pip install --upgrade fastmcp                      │
+2026-03-04 13:07:20.850 | ╰──────────────────────────────────────────────────────────────────────────────╯
+2026-03-04 13:07:20.850 | 
+2026-03-04 13:07:20.850 | 
+2026-03-04 13:07:20.870 | [03/04/26 21:07:20] INFO     Starting MCP server 'Biosciences     server.py:2580
+2026-03-04 13:07:20.870 |                              Memory Server' with transport 'http'               
+2026-03-04 13:07:20.870 |                              on http://0.0.0.0:8003/mcp                         
+2026-03-04 13:07:20.881 | 2026-03-04 21:07:20 - docket.worker - INFO - Starting worker 'd6df3a495ec0#99' with the following tasks:
+2026-03-04 13:07:20.881 | 2026-03-04 21:07:20 - docket.worker - INFO - * trace(message: str, ...)
+2026-03-04 13:07:20.881 | 2026-03-04 21:07:20 - docket.worker - INFO - * fail(message: str, ...)
+2026-03-04 13:07:20.881 | 2026-03-04 21:07:20 - docket.worker - INFO - * sleep(seconds: float, ...)
+2026-03-04 13:07:59.347 | 2026-03-04 21:07:59 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:07:59.350 | 2026-03-04 21:07:59 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-04 13:07:59.350 | 2026-03-04 21:07:59 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:18:04.383 | 2026-03-04 21:18:04 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:18:04.384 | 2026-03-04 21:18:04 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-04 13:18:04.385 | 2026-03-04 21:18:04 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:18:12.371 | 2026-03-04 21:18:12 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:18:12.372 | 2026-03-04 21:18:12 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-04 13:18:12.372 | 2026-03-04 21:18:12 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:28:31.130 | 2026-03-04 21:28:31 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-04 13:28:31.130 | 2026-03-04 21:28:31 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:07:59.278 | INFO:     172.19.0.1:40414 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:07:59.282 | INFO:     172.19.0.1:40414 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:07:59.328 | INFO:     172.19.0.1:40414 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:07:59.329 | INFO:     172.19.0.1:40414 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:07:59.340 | INFO:     172.19.0.1:40414 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:07:59.341 | INFO:     172.19.0.1:40414 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:07:59.342 | INFO:     172.19.0.1:40424 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:07:59.343 | INFO:     172.19.0.1:40432 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:07:59.343 | INFO:     172.19.0.1:40434 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:07:59.344 | INFO:     172.19.0.1:40424 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:07:59.346 | INFO:     172.19.0.1:40432 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:07:59.348 | INFO:     172.19.0.1:40434 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:04.323 | INFO:     172.19.0.1:46934 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:04.333 | INFO:     172.19.0.1:46934 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:04.365 | INFO:     172.19.0.1:46934 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:04.366 | INFO:     172.19.0.1:46934 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:18:04.375 | INFO:     172.19.0.1:46934 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:04.377 | INFO:     172.19.0.1:46934 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:04.378 | INFO:     172.19.0.1:46940 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:04.379 | INFO:     172.19.0.1:46946 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:04.379 | INFO:     172.19.0.1:46962 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:04.381 | INFO:     172.19.0.1:46940 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:04.382 | INFO:     172.19.0.1:46946 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:04.383 | INFO:     172.19.0.1:46962 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:12.320 | INFO:     172.19.0.1:46976 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:12.322 | INFO:     172.19.0.1:46976 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:12.350 | INFO:     172.19.0.1:46976 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:12.351 | INFO:     172.19.0.1:46976 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:18:12.364 | INFO:     172.19.0.1:46976 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:12.366 | INFO:     172.19.0.1:46976 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:12.367 | INFO:     172.19.0.1:46984 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:12.367 | INFO:     172.19.0.1:46996 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:12.368 | INFO:     172.19.0.1:47012 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:18:12.370 | INFO:     172.19.0.1:46984 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:12.370 | INFO:     172.19.0.1:46996 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:18:12.371 | INFO:     172.19.0.1:47012 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:28:31.124 | INFO:     172.19.0.1:58092 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:28:31.125 | INFO:     172.19.0.1:58094 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:28:31.125 | INFO:     172.19.0.1:58092 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:28:31.129 | INFO:     172.19.0.1:58094 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:28:48.372 | INFO:     172.19.0.1:37886 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:28:48.376 | INFO:     172.19.0.1:37886 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:28:48.423 | INFO:     172.19.0.1:37886 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:28:48.424 | INFO:     172.19.0.1:37886 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:28:48.448 | INFO:     172.19.0.1:37886 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:28:48.575 | INFO:     172.19.0.1:37886 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:28:48.576 | INFO:     172.19.0.1:37888 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:28:48.576 | INFO:     172.19.0.1:37898 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:28:48.577 | INFO:     172.19.0.1:37910 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:28:48.579 | INFO:     172.19.0.1:37888 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:28:48.579 | INFO:     172.19.0.1:37898 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:28:48.580 | INFO:     172.19.0.1:37910 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:32.565 | INFO:     172.19.0.1:44460 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:32.573 | INFO:     172.19.0.1:44460 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:32.583 | INFO:     172.19.0.1:44460 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:32.584 | INFO:     172.19.0.1:44460 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:32:32.590 | INFO:     172.19.0.1:44460 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:32.592 | INFO:     172.19.0.1:44460 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:32.592 | INFO:     172.19.0.1:44472 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:32.593 | INFO:     172.19.0.1:44482 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:32.594 | INFO:     172.19.0.1:44492 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:32.595 | INFO:     172.19.0.1:44472 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:32.596 | INFO:     172.19.0.1:44482 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:32.596 | INFO:     172.19.0.1:44492 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:36.693 | INFO:     172.19.0.1:40248 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:36.695 | INFO:     172.19.0.1:40248 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:36.727 | INFO:     172.19.0.1:40248 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:36.728 | INFO:     172.19.0.1:40248 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:32:36.737 | INFO:     172.19.0.1:40248 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:36.740 | INFO:     172.19.0.1:40248 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:36.740 | INFO:     172.19.0.1:40262 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:36.741 | INFO:     172.19.0.1:40276 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:36.742 | INFO:     172.19.0.1:40282 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:32:36.743 | INFO:     172.19.0.1:40262 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:36.745 | INFO:     172.19.0.1:40276 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:32:36.745 | INFO:     172.19.0.1:40282 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:36:33.416 | INFO:     172.19.0.1:36206 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:36:33.418 | INFO:     172.19.0.1:36206 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:40:05.338 | INFO:     172.19.0.1:42338 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:40:14.736 | INFO:     172.19.0.1:55068 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:40:19.483 | INFO:     172.19.0.1:55082 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:40:29.859 | INFO:     172.19.0.1:56384 - "POST /mcp HTTP/1.1" 406 Not Acceptable
+2026-03-04 13:40:34.330 | INFO:     172.19.0.1:59424 - "POST /mcp HTTP/1.1" 400 Bad Request
+2026-03-04 13:41:45.055 | INFO:     172.19.0.1:42412 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:41:45.061 | INFO:     172.19.0.1:42428 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:41:45.062 | INFO:     172.19.0.1:42444 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:41:45.064 | INFO:     172.19.0.1:42460 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:41:45.137 | INFO:     172.19.0.1:42464 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:41:45.143 | INFO:     172.19.0.1:42470 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:42:08.393 | INFO:     172.19.0.1:55290 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:42:08.397 | INFO:     172.19.0.1:55292 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:42:08.398 | INFO:     172.19.0.1:55300 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:42:08.400 | INFO:     172.19.0.1:55316 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:42:08.410 | INFO:     172.19.0.1:55324 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:42:08.416 | INFO:     172.19.0.1:55328 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:15.351 | INFO:     172.19.0.1:55850 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:50:15.351 | INFO:     172.19.0.1:55850 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:50:15.352 | INFO:     172.19.0.1:55850 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:50:16.859 | INFO:     172.19.0.1:55858 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:16.863 | INFO:     172.19.0.1:55858 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:16.865 | INFO:     172.19.0.1:55872 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:16.866 | INFO:     172.19.0.1:55872 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:50:16.867 | INFO:     172.19.0.1:55872 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:16.868 | INFO:     172.19.0.1:55886 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:16.868 | INFO:     172.19.0.1:55872 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:16.869 | INFO:     172.19.0.1:55886 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:18.122 | INFO:     172.19.0.1:55886 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:18.123 | INFO:     172.19.0.1:55886 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:18.125 | INFO:     172.19.0.1:55898 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:18.126 | INFO:     172.19.0.1:55898 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:19.411 | INFO:     172.19.0.1:55906 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:19.412 | INFO:     172.19.0.1:55906 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:47.781 | INFO:     172.19.0.1:39142 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:50:47.782 | INFO:     172.19.0.1:39142 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:50:47.783 | INFO:     172.19.0.1:39142 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:50:49.022 | INFO:     172.19.0.1:39150 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:49.024 | INFO:     172.19.0.1:39150 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:49.026 | INFO:     172.19.0.1:39150 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:49.026 | INFO:     172.19.0.1:39150 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:50:49.027 | INFO:     172.19.0.1:39150 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:49.028 | INFO:     172.19.0.1:39150 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:49.029 | INFO:     172.19.0.1:39156 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:49.030 | INFO:     172.19.0.1:39150 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:51.208 | INFO:     172.19.0.1:39150 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:51.209 | INFO:     172.19.0.1:39150 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:51.210 | INFO:     172.19.0.1:39168 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:51.211 | INFO:     172.19.0.1:39168 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:51.940 | INFO:     172.19.0.1:39150 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:50:51.940 | INFO:     172.19.0.1:39150 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:50:59.766 | INFO:     172.19.0.1:41616 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:50:59.767 | INFO:     172.19.0.1:41616 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:50:59.767 | INFO:     172.19.0.1:41616 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:51:01.339 | INFO:     172.19.0.1:41620 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:01.340 | INFO:     172.19.0.1:41620 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:01.342 | INFO:     172.19.0.1:41620 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:01.342 | INFO:     172.19.0.1:41620 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:51:01.343 | INFO:     172.19.0.1:41620 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:01.344 | INFO:     172.19.0.1:41620 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:01.345 | INFO:     172.19.0.1:41624 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:01.345 | INFO:     172.19.0.1:41620 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:03.538 | INFO:     172.19.0.1:41620 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:03.538 | INFO:     172.19.0.1:41620 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:03.539 | INFO:     172.19.0.1:41634 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:03.540 | INFO:     172.19.0.1:41634 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:03.699 | INFO:     172.19.0.1:41650 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:03.700 | INFO:     172.19.0.1:41650 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:10.768 | INFO:     172.19.0.1:37444 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:51:10.769 | INFO:     172.19.0.1:37444 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:51:10.769 | INFO:     172.19.0.1:37444 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:51:12.111 | INFO:     172.19.0.1:37460 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:12.113 | INFO:     172.19.0.1:37460 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:12.115 | INFO:     172.19.0.1:37468 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:12.116 | INFO:     172.19.0.1:37468 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:51:12.117 | INFO:     172.19.0.1:37468 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:12.118 | INFO:     172.19.0.1:37474 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:12.119 | INFO:     172.19.0.1:37468 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:12.120 | INFO:     172.19.0.1:37474 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:14.302 | INFO:     172.19.0.1:37474 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:14.303 | INFO:     172.19.0.1:37474 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:14.305 | INFO:     172.19.0.1:38412 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:14.305 | INFO:     172.19.0.1:38412 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:51:15.741 | INFO:     172.19.0.1:38412 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:51:15.743 | INFO:     172.19.0.1:38412 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:52:47.212 | INFO:     172.19.0.1:45404 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:52:47.217 | INFO:     172.19.0.1:45420 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:52:47.217 | INFO:     172.19.0.1:45436 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:52:47.220 | INFO:     172.19.0.1:45444 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:52:47.275 | INFO:     172.19.0.1:45450 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:52:47.280 | INFO:     172.19.0.1:45454 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.386 | INFO:     172.19.0.1:42176 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.389 | INFO:     172.19.0.1:42180 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:53:49.390 | INFO:     172.19.0.1:42192 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.391 | INFO:     172.19.0.1:42206 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.399 | INFO:     172.19.0.1:42216 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.406 | INFO:     172.19.0.1:42228 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.449 | INFO:     172.19.0.1:42234 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.453 | INFO:     172.19.0.1:42236 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:53:49.454 | INFO:     172.19.0.1:42248 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.456 | INFO:     172.19.0.1:42260 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.464 | INFO:     172.19.0.1:42270 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.472 | INFO:     172.19.0.1:42284 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.480 | INFO:     172.19.0.1:42298 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.490 | INFO:     172.19.0.1:42302 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.499 | INFO:     172.19.0.1:42314 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.508 | INFO:     172.19.0.1:42320 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.516 | INFO:     172.19.0.1:42324 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:53:49.524 | INFO:     172.19.0.1:42334 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:28:48.580 | 2026-03-04 21:28:48 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:28:48.582 | 2026-03-04 21:28:48 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-04 13:28:48.582 | 2026-03-04 21:28:48 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:32:32.597 | 2026-03-04 21:32:32 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:32:32.598 | 2026-03-04 21:32:32 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-04 13:32:32.599 | 2026-03-04 21:32:32 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:32:36.746 | 2026-03-04 21:32:36 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:32:36.747 | 2026-03-04 21:32:36 - mcp.server.lowlevel.server - INFO - Processing request of type ListPromptsRequest
+2026-03-04 13:32:36.747 | 2026-03-04 21:32:36 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:36:33.420 | 2026-03-04 21:36:33 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:41:45.064 | 2026-03-04 21:41:45 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:41:45.138 | 2026-03-04 21:41:45 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:41:45.143 | 2026-03-04 21:41:45 - mcp.server.streamable_http - INFO - Terminating session: e8ab649eab5c44d38b4ceb66afd260bf
+2026-03-04 13:42:08.400 | 2026-03-04 21:42:08 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:42:08.411 | 2026-03-04 21:42:08 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:42:08.416 | 2026-03-04 21:42:08 - mcp.server.streamable_http - INFO - Terminating session: 3376471aead6485c94a06c717ad8ad38
+2026-03-04 13:50:16.869 | 2026-03-04 21:50:16 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:50:18.124 | 2026-03-04 21:50:18 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:50:18.127 | 2026-03-04 21:50:18 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:50:19.412 | 2026-03-04 21:50:19 - mcp.server.streamable_http - INFO - Terminating session: ce4b8e16f3434e13b84ddcaea4a26f87
+2026-03-04 13:50:49.031 | 2026-03-04 21:50:49 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:50:51.209 | 2026-03-04 21:50:51 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:50:51.211 | 2026-03-04 21:50:51 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:50:51.940 | 2026-03-04 21:50:51 - mcp.server.streamable_http - INFO - Terminating session: 2834e8ef02b84847a2762dd7aeee87c0
+2026-03-04 13:51:01.346 | 2026-03-04 21:51:01 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:51:03.539 | 2026-03-04 21:51:03 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:51:03.541 | 2026-03-04 21:51:03 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:51:03.699 | 2026-03-04 21:51:03 - mcp.server.streamable_http - INFO - Terminating session: 0b50c1cf1a9d460a99ee1c9ef4e5c8ba
+2026-03-04 13:51:12.121 | 2026-03-04 21:51:12 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:51:14.304 | 2026-03-04 21:51:14 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:51:14.306 | 2026-03-04 21:51:14 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:51:15.743 | 2026-03-04 21:51:15 - mcp.server.streamable_http - INFO - Terminating session: d27daa4bb90648609edb28b8bb317129
+2026-03-04 13:52:47.220 | 2026-03-04 21:52:47 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:52:47.276 | 2026-03-04 21:52:47 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:52:47.280 | 2026-03-04 21:52:47 - mcp.server.streamable_http - INFO - Terminating session: affc7f25274a4a73bc6ba7fee7039ba3
+2026-03-04 13:53:49.392 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.400 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:53:49.406 | 2026-03-04 21:53:49 - mcp.server.streamable_http - INFO - Terminating session: 0c96f2b025c540dea83ff336b24c5c16
+2026-03-04 13:53:49.457 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.457 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Starting episode queue worker for group_id: open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.457 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.458 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.458 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.464 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:53:49.473 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.473 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.473 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.473 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.481 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.481 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.481 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.481 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.491 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.491 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.491 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.491 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.500 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.500 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.500 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.500 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.509 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.509 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.509 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.509 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.516 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.517 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.517 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.517 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.525 | 2026-03-04 21:53:49 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:53:49.525 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 13:53:49.525 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.525 | 2026-03-04 21:53:49 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 13:53:49.532 | 2026-03-04 21:53:49 - mcp.server.streamable_http - INFO - Terminating session: 093194de09c6466d821688f9b49499c5
+2026-03-04 13:56:45.222 | 2026-03-04 21:56:45 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:56:47.652 | 2026-03-04 21:56:47 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:56:48.473 | 2026-03-04 21:56:48 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:56:48.475 | 2026-03-04 21:56:48 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:56:50.195 | 2026-03-04 21:56:50 - mcp.server.streamable_http - INFO - Terminating session: 98d0910307b7420180cc0a09a66a80d5
+2026-03-04 13:56:52.047 | 2026-03-04 21:56:52 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:56:52.049 | 2026-03-04 21:56:52 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:56:52.706 | 2026-03-04 21:56:52 - mcp.server.streamable_http - INFO - Terminating session: 4b875c9874ad4e5da3210fc9cfd9d400
+2026-03-04 13:57:08.669 | 2026-03-04 21:57:08 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:57:10.949 | 2026-03-04 21:57:10 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:57:10.950 | 2026-03-04 21:57:10 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:57:11.614 | 2026-03-04 21:57:11 - mcp.server.streamable_http - INFO - Terminating session: 74ac433a831a4f6db8493373862b640c
+2026-03-04 13:57:28.784 | 2026-03-04 21:57:28 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:57:28.789 | 2026-03-04 21:57:28 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:57:28.791 | 2026-03-04 21:57:28 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:57:36.836 | 2026-03-04 21:57:36 - mcp.server.streamable_http - INFO - Terminating session: 07f10e52281f4ca99ed2e71b6508247e
+2026-03-04 13:57:48.839 | 2026-03-04 21:57:48 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:57:52.216 | 2026-03-04 21:57:52 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:57:52.681 | 2026-03-04 21:57:52 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:57:52.683 | 2026-03-04 21:57:52 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:57:53.542 | 2026-03-04 21:57:53 - mcp.server.streamable_http - INFO - Terminating session: 2055928f76e649cf9335a3b21515a2ef
+2026-03-04 13:57:54.754 | 2026-03-04 21:57:54 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:57:54.756 | 2026-03-04 21:57:54 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:57:55.728 | 2026-03-04 21:57:55 - mcp.server.streamable_http - INFO - Terminating session: b0945a9cd6584abe98aedcd44a48d786
+2026-03-04 13:57:57.307 | 2026-03-04 21:57:57 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:58:23.435 | 2026-03-04 21:58:23 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:58:23.446 | 2026-03-04 21:58:23 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 13:58:24.727 | 2026-03-04 21:58:24 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 13:58:24.729 | 2026-03-04 21:58:24 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 13:58:27.057 | 2026-03-04 21:58:27 - mcp.server.streamable_http - INFO - Terminating session: f2eb3bec2c6745628d83d8fbadfef073
+2026-03-04 13:58:33.836 | 2026-03-04 21:58:33 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:58:33.897 | 2026-03-04 21:58:33 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:58:33.998 | 2026-03-04 21:58:33 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `entity_edges` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=7, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 15, 'column': 7}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n            MATCH (e:Episodic)\n            WHERE e.group_id IN $group_ids\n            \n            RETURN DISTINCT\n            \n    e.uuid AS uuid,\n    e.name AS name,\n    e.group_id AS group_id,\n    e.created_at AS created_at,\n    e.source AS source,\n    e.source_description AS source_description,\n    e.content AS content,\n    e.valid_at AS valid_at,\n    e.entity_edges AS entity_edges\n\n            ORDER BY uuid DESC\n            LIMIT $limit'
+2026-03-04 13:58:34.008 | 2026-03-04 21:58:34 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:58:34.192 | 2026-03-04 21:58:34 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-4fa91b2c-99bb-4e74-8525-5dc338d9b555', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f062e1e8e0>, 'content': None, 'json_data': {'input': ['biosciences-mcp'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 13:58:34.193 | 2026-03-04 21:58:34 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 13:58:35.035 | 2026-03-04 21:58:35 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 13:58:35.037 | 2026-03-04 21:58:35 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 21:58:35 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '222', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-6585956746-sx2gr', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999997', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_efa09af4bc8b9ec9bbce4fea47df2d8e', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'set-cookie': '__cf_bm=j8DcD7RLdWty3lmFbHWpcDLKBwlyJ0l8gLdO0fsa4HA-1772661515.035108-1.0.1.1-nwAWLBw0PIY48UzM_MEgSLJm_x3FUsPgFZXYkLxMx609PyNc8N6I46CBD3EVePLs2WvSE2X0pKDJbe2EGNAs69KqEZR23OIAiqwAEZK66NpYduUowG7CT6RZy7fBTFAq; HttpOnly; Secure; Path=/; Domain=api.openai.com; Expires=Wed, 04 Mar 2026 22:28:35 GMT', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d7424a4fedc4896-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 13:58:35.037 | 2026-03-04 21:58:35 - openai._base_client - DEBUG - request_id: req_efa09af4bc8b9ec9bbce4fea47df2d8e
+2026-03-04 13:58:35.161 | 2026-03-04 21:58:35 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `name_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=48, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 4, 'column': 48}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n                                                                                                                                    MATCH (n:Entity)\n                                                                                                                                     WHERE n.group_id IN $group_ids\n            WITH n, vector.similarity.cosine(n.name_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        n.uuid AS uuid,\n        n.name AS name,\n        n.group_id AS group_id,\n        n.created_at AS created_at,\n        n.summary AS summary,\n        labels(n) AS labels,\n        properties(n) AS attributes\n    \n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:58:35.174 | 2026-03-04 21:58:35 - graphiti_core.search.search - DEBUG - search returned context for query biosciences-mcp in 1165.7752990722656 ms
+2026-03-04 13:58:35.183 | 2026-03-04 21:58:35 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:58:35.183 | 2026-03-04 21:58:35 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-9733ce43-722f-4ae0-a9b8-9ef2506b6e58', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f076897a60>, 'content': None, 'json_data': {'input': ['biosciences-mcp graph content'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 13:58:35.184 | 2026-03-04 21:58:35 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 13:58:36.116 | 2026-03-04 21:58:36 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 13:58:36.117 | 2026-03-04 21:58:36 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 21:58:36 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '58', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-67545956b4-tml9f', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999993', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_fd206e57c94f4928afad0327b14728e0', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d7424a9dd334896-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 13:58:36.117 | 2026-03-04 21:58:36 - openai._base_client - DEBUG - request_id: req_fd206e57c94f4928afad0327b14728e0
+2026-03-04 13:58:36.279 | 2026-03-04 21:58:36 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `fact_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=63, offset=151>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 151, 'line': 4, 'column': 63}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n        MATCH (n:Entity)-[e:RELATES_TO]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH DISTINCT e, n, m, vector.similarity.cosine(e.fact_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:58:36.279 | 2026-03-04 21:58:36 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `episodes` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=11, offset=483>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 483, 'line': 15, 'column': 11}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n        MATCH (n:Entity)-[e:RELATES_TO]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH DISTINCT e, n, m, vector.similarity.cosine(e.fact_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:58:36.279 | 2026-03-04 21:58:36 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `episodes` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=11, offset=513>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 513, 'line': 15, 'column': 11}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CALL db.index.fulltext.queryRelationships("edge_name_and_fact", $query, {limit: $limit})\n    YIELD relationship AS rel, score\n    MATCH (n:Entity)-[e:RELATES_TO {uuid: rel.uuid}]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH e, score, n, m\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:58:36.280 | 2026-03-04 21:58:36 - graphiti_core.search.search - DEBUG - search returned context for query biosciences-mcp graph content in 1097.2089767456055 ms
+2026-03-04 13:58:45.938 | 2026-03-04 21:58:45 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:58:46.109 | 2026-03-04 21:58:46 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:58:46.112 | 2026-03-04 21:58:46 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:58:46.120 | 2026-03-04 21:58:46 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:05.360 | 2026-03-04 21:59:05 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:05.364 | 2026-03-04 21:59:05 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `entity_edges` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=7, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 15, 'column': 7}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n            MATCH (e:Episodic)\n            WHERE e.group_id IN $group_ids\n            \n            RETURN DISTINCT\n            \n    e.uuid AS uuid,\n    e.name AS name,\n    e.group_id AS group_id,\n    e.created_at AS created_at,\n    e.source AS source,\n    e.source_description AS source_description,\n    e.content AS content,\n    e.valid_at AS valid_at,\n    e.entity_edges AS entity_edges\n\n            ORDER BY uuid DESC\n            LIMIT $limit'
+2026-03-04 13:59:05.372 | 2026-03-04 21:59:05 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:05.376 | 2026-03-04 21:59:05 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `entity_edges` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=7, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 15, 'column': 7}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n            MATCH (e:Episodic)\n            WHERE e.group_id IN $group_ids\n            \n            RETURN DISTINCT\n            \n    e.uuid AS uuid,\n    e.name AS name,\n    e.group_id AS group_id,\n    e.created_at AS created_at,\n    e.source AS source,\n    e.source_description AS source_description,\n    e.content AS content,\n    e.valid_at AS valid_at,\n    e.entity_edges AS entity_edges\n\n            ORDER BY uuid DESC\n            LIMIT $limit'
+2026-03-04 13:59:05.386 | 2026-03-04 21:59:05 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:05.386 | 2026-03-04 21:59:05 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-dd9a6ebf-cde1-4bdb-ba66-05d65dec30e0', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f0628f72e0>, 'content': None, 'json_data': {'input': ['server'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 13:59:05.387 | 2026-03-04 21:59:05 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 13:59:05.957 | 2026-03-04 21:59:05 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 13:59:05.958 | 2026-03-04 21:59:05 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 21:59:06 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '87', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-5ff87fdccf-z2hkl', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999999', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_c89f7a355dc84c12bb54ca3b974fb9c1', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d74256788f82f1c-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 13:59:05.958 | 2026-03-04 21:59:05 - openai._base_client - DEBUG - request_id: req_c89f7a355dc84c12bb54ca3b974fb9c1
+2026-03-04 13:59:05.963 | 2026-03-04 21:59:05 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `name_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=48, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 4, 'column': 48}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n                                                                                                                                    MATCH (n:Entity)\n                                                                                                                                     WHERE n.group_id IN $group_ids\n            WITH n, vector.similarity.cosine(n.name_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        n.uuid AS uuid,\n        n.name AS name,\n        n.group_id AS group_id,\n        n.created_at AS created_at,\n        n.summary AS summary,\n        labels(n) AS labels,\n        properties(n) AS attributes\n    \n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:05.968 | 2026-03-04 21:59:05 - graphiti_core.search.search - DEBUG - search returned context for query server in 581.4239978790283 ms
+2026-03-04 13:59:05.977 | 2026-03-04 21:59:05 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:05.977 | 2026-03-04 21:59:05 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-f6025905-5be8-48b7-8260-59fd02421652', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f062c21f80>, 'content': None, 'json_data': {'input': ['mcp server'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 13:59:05.978 | 2026-03-04 21:59:05 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 13:59:07.786 | 2026-03-04 21:59:07 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 13:59:07.787 | 2026-03-04 21:59:07 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 21:59:08 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '207', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-5d95b7c5db-wj4h2', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999998', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_ec4398f6ff514448bd541de68ae4142d', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d742569fb8c2f1c-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 13:59:07.787 | 2026-03-04 21:59:07 - openai._base_client - DEBUG - request_id: req_ec4398f6ff514448bd541de68ae4142d
+2026-03-04 13:59:07.795 | 2026-03-04 21:59:07 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `episodes` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=11, offset=513>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 513, 'line': 15, 'column': 11}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CALL db.index.fulltext.queryRelationships("edge_name_and_fact", $query, {limit: $limit})\n    YIELD relationship AS rel, score\n    MATCH (n:Entity)-[e:RELATES_TO {uuid: rel.uuid}]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH e, score, n, m\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:07.797 | 2026-03-04 21:59:07 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `fact_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=63, offset=151>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 151, 'line': 4, 'column': 63}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n        MATCH (n:Entity)-[e:RELATES_TO]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH DISTINCT e, n, m, vector.similarity.cosine(e.fact_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:07.797 | 2026-03-04 21:59:07 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `episodes` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=11, offset=483>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 483, 'line': 15, 'column': 11}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n        MATCH (n:Entity)-[e:RELATES_TO]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH DISTINCT e, n, m, vector.similarity.cosine(e.fact_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:07.799 | 2026-03-04 21:59:07 - graphiti_core.search.search - DEBUG - search returned context for query mcp server in 1821.857213973999 ms
+2026-03-04 13:59:29.124 | 2026-03-04 21:59:29 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:29.125 | 2026-03-04 21:59:29 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-3cd353f6-271a-4ff6-a42a-6e67c8f4fded', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f06271c900>, 'content': None, 'json_data': {'input': ['biosciences-mcp'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 13:59:29.126 | 2026-03-04 21:59:29 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 13:59:29.557 | 2026-03-04 21:59:29 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 13:59:29.558 | 2026-03-04 21:59:29 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 21:59:30 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '103', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-85dc84998c-md9dj', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999997', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_e1ecca75894549e69968312d66fa6a4f', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d7425fb7def09cf-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 13:59:29.558 | 2026-03-04 21:59:29 - openai._base_client - DEBUG - request_id: req_e1ecca75894549e69968312d66fa6a4f
+2026-03-04 13:59:29.567 | 2026-03-04 21:59:29 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `name_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=48, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 4, 'column': 48}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n                                                                                                                                    MATCH (n:Entity)\n                                                                                                                                     WHERE n.group_id IN $group_ids\n            WITH n, vector.similarity.cosine(n.name_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        n.uuid AS uuid,\n        n.name AS name,\n        n.group_id AS group_id,\n        n.created_at AS created_at,\n        n.summary AS summary,\n        labels(n) AS labels,\n        properties(n) AS attributes\n    \n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:29.569 | 2026-03-04 21:59:29 - graphiti_core.search.search - DEBUG - search returned context for query biosciences-mcp in 444.29898262023926 ms
+2026-03-04 13:59:29.587 | 2026-03-04 21:59:29 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:29.588 | 2026-03-04 21:59:29 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-1c8af4fa-d0f6-457d-938b-92801745978b', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f062dd6de0>, 'content': None, 'json_data': {'input': ['biosciences-mcp responsibilities servers tests gateway'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 13:59:29.588 | 2026-03-04 21:59:29 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 13:59:30.606 | 2026-03-04 21:59:30 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 13:59:30.608 | 2026-03-04 21:59:30 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 21:59:31 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '125', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-7b686d89f6-2kqlm', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999987', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_fafa2fb5631c468a8b79b57b79cc968e', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d7425fd8bcb09cf-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 13:59:30.608 | 2026-03-04 21:59:30 - openai._base_client - DEBUG - request_id: req_fafa2fb5631c468a8b79b57b79cc968e
+2026-03-04 13:59:30.613 | 2026-03-04 21:59:30 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `fact_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=63, offset=151>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 151, 'line': 4, 'column': 63}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n        MATCH (n:Entity)-[e:RELATES_TO]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH DISTINCT e, n, m, vector.similarity.cosine(e.fact_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:30.613 | 2026-03-04 21:59:30 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `episodes` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=11, offset=483>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 483, 'line': 15, 'column': 11}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n        MATCH (n:Entity)-[e:RELATES_TO]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH DISTINCT e, n, m, vector.similarity.cosine(e.fact_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:30.712 | 2026-03-04 21:59:30 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `episodes` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=11, offset=513>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 513, 'line': 15, 'column': 11}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CALL db.index.fulltext.queryRelationships("edge_name_and_fact", $query, {limit: $limit})\n    YIELD relationship AS rel, score\n    MATCH (n:Entity)-[e:RELATES_TO {uuid: rel.uuid}]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH e, score, n, m\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:30.713 | 2026-03-04 21:59:30 - graphiti_core.search.search - DEBUG - search returned context for query biosciences-mcp responsibilities servers tests gateway in 1126.1553764343262 ms
+2026-03-04 13:59:30.720 | 2026-03-04 21:59:30 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:30.720 | 2026-03-04 21:59:30 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-8526ee0b-d4a2-4a5d-beb1-42d36d03f433', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f0628f53a0>, 'content': None, 'json_data': {'input': ['biosciences-mcp'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 13:59:30.720 | 2026-03-04 21:59:30 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 13:59:30.945 | 2026-03-04 21:59:30 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 13:59:30.947 | 2026-03-04 21:59:30 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 21:59:31 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '46', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-67545956b4-g9gk6', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999997', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_aab32cef63604d08bde7a8659de3d7ac', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d742604ba6509cf-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 13:59:30.947 | 2026-03-04 21:59:30 - openai._base_client - DEBUG - request_id: req_aab32cef63604d08bde7a8659de3d7ac
+2026-03-04 13:59:30.951 | 2026-03-04 21:59:30 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `name_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=48, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 4, 'column': 48}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n                                                                                                                                    MATCH (n:Entity)\n                                                                                                                                     WHERE n.group_id IN $group_ids\n            WITH n, vector.similarity.cosine(n.name_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        n.uuid AS uuid,\n        n.name AS name,\n        n.group_id AS group_id,\n        n.created_at AS created_at,\n        n.summary AS summary,\n        labels(n) AS labels,\n        properties(n) AS attributes\n    \n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:30.952 | 2026-03-04 21:59:30 - graphiti_core.search.search - DEBUG - search returned context for query biosciences-mcp in 231.9197654724121 ms
+2026-03-04 13:59:30.962 | 2026-03-04 21:59:30 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 13:59:30.964 | 2026-03-04 21:59:30 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-d6fd792b-bb1b-4ea7-b57b-d1cdc3d58ce9', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f074328680>, 'content': None, 'json_data': {'input': ['biosciences-mcp'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 13:59:30.965 | 2026-03-04 21:59:30 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 13:59:31.150 | 2026-03-04 21:59:31 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 13:59:31.151 | 2026-03-04 21:59:31 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 21:59:31 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '76', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-5ff87fdccf-fkv4p', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999997', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_eb0f12e35d714ccb897cbc6f067c8abe', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d7426062e8e09cf-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 13:59:31.151 | 2026-03-04 21:59:31 - openai._base_client - DEBUG - request_id: req_eb0f12e35d714ccb897cbc6f067c8abe
+2026-03-04 13:59:31.157 | 2026-03-04 21:59:31 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `episodes` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=11, offset=513>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 513, 'line': 15, 'column': 11}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: 'CALL db.index.fulltext.queryRelationships("edge_name_and_fact", $query, {limit: $limit})\n    YIELD relationship AS rel, score\n    MATCH (n:Entity)-[e:RELATES_TO {uuid: rel.uuid}]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH e, score, n, m\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:31.157 | 2026-03-04 21:59:31 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `fact_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=63, offset=151>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 151, 'line': 4, 'column': 63}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n        MATCH (n:Entity)-[e:RELATES_TO]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH DISTINCT e, n, m, vector.similarity.cosine(e.fact_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:31.157 | 2026-03-04 21:59:31 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `episodes` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=11, offset=483>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 483, 'line': 15, 'column': 11}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n        MATCH (n:Entity)-[e:RELATES_TO]->(m:Entity)\n     WHERE e.group_id IN $group_ids\n            WITH DISTINCT e, n, m, vector.similarity.cosine(e.fact_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        e.uuid AS uuid,\n        n.uuid AS source_node_uuid,\n        m.uuid AS target_node_uuid,\n        e.group_id AS group_id,\n        e.created_at AS created_at,\n        e.name AS name,\n        e.fact AS fact,\n        e.episodes AS episodes,\n        e.expired_at AS expired_at,\n        e.valid_at AS valid_at,\n        e.invalid_at AS invalid_at,\n    properties(e) AS attributes\n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 13:59:31.158 | 2026-03-04 21:59:31 - graphiti_core.search.search - DEBUG - search returned context for query biosciences-mcp in 195.17755508422852 ms
+2026-03-04 14:00:54.473 | 2026-03-04 22:00:54 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:00:57.140 | 2026-03-04 22:00:57 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 14:00:57.142 | 2026-03-04 22:00:57 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 14:00:58.053 | 2026-03-04 22:00:58 - mcp.server.streamable_http - INFO - Terminating session: d0449b1ac3ac4ef4a7e888731082d53d
+2026-03-04 14:02:38.168 | 2026-03-04 22:02:38 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:38.176 | 2026-03-04 22:02:38 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:02:38.181 | 2026-03-04 22:02:38 - mcp.server.streamable_http - INFO - Terminating session: cd2d3ad0f88c4969af047e0c8637a99a
+2026-03-04 14:02:53.909 | 2026-03-04 22:02:53 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:53.918 | 2026-03-04 22:02:53 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:02:53.923 | 2026-03-04 22:02:53 - mcp.server.streamable_http - INFO - Terminating session: 049b2da0f43c474db4a6f068e8ab563a
+2026-03-04 14:02:53.971 | 2026-03-04 22:02:53 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:53.971 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 14:02:53.972 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:53.972 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:53.976 | 2026-03-04 22:02:53 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:02:53.983 | 2026-03-04 22:02:53 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:53.983 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 14:02:53.983 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:53.983 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:53.991 | 2026-03-04 22:02:53 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:53.991 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 14:02:53.991 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:53.991 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:53.998 | 2026-03-04 22:02:53 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:53.998 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 14:02:53.998 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:53.998 | 2026-03-04 22:02:53 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.005 | 2026-03-04 22:02:54 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:54.005 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 14:02:54.005 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.005 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.012 | 2026-03-04 22:02:54 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:54.013 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 14:02:54.013 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.013 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.019 | 2026-03-04 22:02:54 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:54.019 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 14:02:54.019 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.019 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.026 | 2026-03-04 22:02:54 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:02:54.026 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - INFO - Processing episode None for group open-biosciences-migration-2026-priming
+2026-03-04 14:02:54.026 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - ERROR - Failed to process episode None for group open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.026 | 2026-03-04 22:02:54 - biosciences_memory.services.queue_service - ERROR - Error processing queued episode for group_id open-biosciences-migration-2026-priming: name cannot be used as an attribute for Location as it is a protected attribute name.
+2026-03-04 14:02:54.032 | 2026-03-04 22:02:54 - mcp.server.streamable_http - INFO - Terminating session: 38f2ca71968e451e8c1e5d09ccf387e3
+2026-03-04 14:03:01.781 | 2026-03-04 22:03:01 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:03:01.785 | 2026-03-04 22:03:01 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `entity_edges` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=7, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 15, 'column': 7}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n            MATCH (e:Episodic)\n            WHERE e.group_id IN $group_ids\n            \n            RETURN DISTINCT\n            \n    e.uuid AS uuid,\n    e.name AS name,\n    e.group_id AS group_id,\n    e.created_at AS created_at,\n    e.source AS source,\n    e.source_description AS source_description,\n    e.content AS content,\n    e.valid_at AS valid_at,\n    e.entity_edges AS entity_edges\n\n            ORDER BY uuid DESC\n            LIMIT $limit'
+2026-03-04 14:03:01.792 | 2026-03-04 22:03:01 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:03:01.793 | 2026-03-04 22:03:01 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-a8197ec6-be16-4688-b913-4071f702b122', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f062d396c0>, 'content': None, 'json_data': {'input': ['biosciences-mcp'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 14:03:01.794 | 2026-03-04 22:03:01 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 14:03:02.304 | 2026-03-04 22:03:02 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 14:03:02.305 | 2026-03-04 22:03:02 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 22:03:02 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '163', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-7b686d89f6-4vbr9', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999997', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_656c37168863427884163e0b9c5c7650', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d742b2ccddada6c-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 14:03:02.305 | 2026-03-04 22:03:02 - openai._base_client - DEBUG - request_id: req_656c37168863427884163e0b9c5c7650
+2026-03-04 14:03:02.314 | 2026-03-04 22:03:02 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `name_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=48, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 4, 'column': 48}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n                                                                                                                                    MATCH (n:Entity)\n                                                                                                                                     WHERE n.group_id IN $group_ids\n            WITH n, vector.similarity.cosine(n.name_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        n.uuid AS uuid,\n        n.name AS name,\n        n.group_id AS group_id,\n        n.created_at AS created_at,\n        n.summary AS summary,\n        labels(n) AS labels,\n        properties(n) AS attributes\n    \n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 14:03:02.315 | 2026-03-04 22:03:02 - graphiti_core.search.search - DEBUG - search returned context for query biosciences-mcp in 522.8142738342285 ms
+2026-03-04 14:03:18.798 | 2026-03-04 22:03:18 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:03:18.802 | 2026-03-04 22:03:18 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `entity_edges` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=15, column=7, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 15, 'column': 7}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n            MATCH (e:Episodic)\n            WHERE e.group_id IN $group_ids\n            \n            RETURN DISTINCT\n            \n    e.uuid AS uuid,\n    e.name AS name,\n    e.group_id AS group_id,\n    e.created_at AS created_at,\n    e.source AS source,\n    e.source_description AS source_description,\n    e.content AS content,\n    e.valid_at AS valid_at,\n    e.entity_edges AS entity_edges\n\n            ORDER BY uuid DESC\n            LIMIT $limit'
+2026-03-04 14:03:18.808 | 2026-03-04 22:03:18 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:03:18.816 | 2026-03-04 22:03:18 - mcp.server.lowlevel.server - INFO - Processing request of type CallToolRequest
+2026-03-04 14:03:18.817 | 2026-03-04 22:03:18 - openai._base_client - DEBUG - Request options: {'method': 'post', 'url': '/embeddings', 'files': None, 'idempotency_key': 'stainless-python-retry-852ecc2d-21a2-4eaa-ae55-93cc6de01650', 'post_parser': <function AsyncEmbeddings.create.<locals>.parser at 0x73f062c21940>, 'content': None, 'json_data': {'input': ['biosciences-mcp'], 'model': 'text-embedding-3-small', 'encoding_format': 'base64'}}
+2026-03-04 14:03:18.817 | 2026-03-04 22:03:18 - openai._base_client - DEBUG - Sending HTTP Request: POST https://api.openai.com/v1/embeddings
+2026-03-04 14:03:19.139 | 2026-03-04 22:03:19 - httpx - INFO - HTTP Request: POST https://api.openai.com/v1/embeddings "HTTP/1.1 200 OK"
+2026-03-04 14:03:19.141 | 2026-03-04 22:03:19 - openai._base_client - DEBUG - HTTP Response: POST https://api.openai.com/v1/embeddings "200 OK" Headers({'date': 'Wed, 04 Mar 2026 22:03:19 GMT', 'content-type': 'application/json', 'transfer-encoding': 'chunked', 'connection': 'keep-alive', 'access-control-allow-origin': '*', 'access-control-expose-headers': 'X-Request-ID', 'openai-model': 'text-embedding-3-small', 'openai-organization': 'user-o9maikl3irki5c2l27ygddct', 'openai-processing-ms': '70', 'openai-project': 'proj_UyaxW4qpA3vxXWXczfERhhgi', 'openai-version': '2020-10-01', 'server': 'cloudflare', 'strict-transport-security': 'max-age=31536000; includeSubDomains; preload', 'via': 'envoy-router-5ff87fdccf-6fb6p', 'x-ratelimit-limit-requests': '10000', 'x-ratelimit-limit-tokens': '5000000', 'x-ratelimit-remaining-requests': '9999', 'x-ratelimit-remaining-tokens': '4999997', 'x-ratelimit-reset-requests': '6ms', 'x-ratelimit-reset-tokens': '0s', 'x-request-id': 'req_ff7307511f764d709a6da2a43e3b2f72', 'x-openai-proxy-wasm': 'v0.1', 'cf-cache-status': 'DYNAMIC', 'x-content-type-options': 'nosniff', 'content-encoding': 'gzip', 'cf-ray': '9d742b973ad9964b-LAX', 'alt-svc': 'h3=":443"; ma=86400'})
+2026-03-04 14:03:19.141 | 2026-03-04 22:03:19 - openai._base_client - DEBUG - request_id: req_ff7307511f764d709a6da2a43e3b2f72
+2026-03-04 14:03:19.149 | 2026-03-04 22:03:19 - neo4j.notifications - WARNING - Received notification from DBMS server: <GqlStatusObject gql_status='01N52', status_description='warn: property key does not exist. The property `name_embedding` does not exist. Verify that the spelling is correct.', position=<SummaryInputPosition line=4, column=48, offset=361>, raw_classification='UNRECOGNIZED', classification=<NotificationClassification.UNRECOGNIZED: 'UNRECOGNIZED'>, raw_severity='WARNING', severity=<NotificationSeverity.WARNING: 'WARNING'>, diagnostic_record={'_classification': 'UNRECOGNIZED', '_severity': 'WARNING', '_position': {'offset': 361, 'line': 4, 'column': 48}, 'OPERATION': '', 'OPERATION_CODE': '0', 'CURRENT_SCHEMA': '/'}> for query: '\n                                                                                                                                    MATCH (n:Entity)\n                                                                                                                                     WHERE n.group_id IN $group_ids\n            WITH n, vector.similarity.cosine(n.name_embedding, $search_vector) AS score\n            WHERE score > $min_score\n            RETURN\n            \n        n.uuid AS uuid,\n        n.name AS name,\n        n.group_id AS group_id,\n        n.created_at AS created_at,\n        n.summary AS summary,\n        labels(n) AS labels,\n        properties(n) AS attributes\n    \n            ORDER BY score DESC\n            LIMIT $limit\n            '
+2026-03-04 14:03:19.150 | 2026-03-04 22:03:19 - graphiti_core.search.search - DEBUG - search returned context for query biosciences-mcp in 333.1010341644287 ms
+2026-03-04 14:03:19.170 | 2026-03-04 22:03:19 - mcp.server.streamable_http - INFO - Terminating session: d52e181cf1e24b7b9edfa3f35085cc16
+2026-03-04 14:03:30.544 | 2026-03-04 22:03:30 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:03:33.437 | 2026-03-04 22:03:33 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 14:03:33.439 | 2026-03-04 22:03:33 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 14:03:34.461 | 2026-03-04 22:03:34 - mcp.server.streamable_http - INFO - Terminating session: 6a7a2318a4d44ec4b0466255ac737569
+2026-03-04 13:53:49.532 | INFO:     172.19.0.1:42342 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:39.362 | INFO:     172.19.0.1:54960 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:56:39.363 | INFO:     172.19.0.1:54960 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:56:39.363 | INFO:     172.19.0.1:54960 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:56:41.836 | INFO:     172.19.0.1:54968 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:56:41.837 | INFO:     172.19.0.1:54968 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:56:41.837 | INFO:     172.19.0.1:54968 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:56:45.212 | INFO:     172.19.0.1:51596 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:45.214 | INFO:     172.19.0.1:51596 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:45.215 | INFO:     172.19.0.1:51596 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:45.216 | INFO:     172.19.0.1:51596 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:56:45.217 | INFO:     172.19.0.1:51596 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:45.218 | INFO:     172.19.0.1:51596 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:45.220 | INFO:     172.19.0.1:51602 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:45.221 | INFO:     172.19.0.1:51596 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:47.643 | INFO:     172.19.0.1:51620 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:47.645 | INFO:     172.19.0.1:51620 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:47.647 | INFO:     172.19.0.1:51620 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:47.648 | INFO:     172.19.0.1:51620 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:56:47.649 | INFO:     172.19.0.1:51620 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:47.650 | INFO:     172.19.0.1:51628 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:47.650 | INFO:     172.19.0.1:51620 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:47.651 | INFO:     172.19.0.1:51628 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:48.471 | INFO:     172.19.0.1:51628 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:48.472 | INFO:     172.19.0.1:51628 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:48.474 | INFO:     172.19.0.1:51642 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:48.475 | INFO:     172.19.0.1:51642 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:50.192 | INFO:     172.19.0.1:51628 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:50.195 | INFO:     172.19.0.1:51628 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:52.045 | INFO:     172.19.0.1:51618 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:52.047 | INFO:     172.19.0.1:51618 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:52.048 | INFO:     172.19.0.1:51652 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:52.049 | INFO:     172.19.0.1:51652 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:56:52.704 | INFO:     172.19.0.1:51652 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:56:52.706 | INFO:     172.19.0.1:51652 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:07.427 | INFO:     172.19.0.1:56844 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:57:07.428 | INFO:     172.19.0.1:56844 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:07.429 | INFO:     172.19.0.1:56844 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:08.661 | INFO:     172.19.0.1:56850 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:08.662 | INFO:     172.19.0.1:56850 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:08.664 | INFO:     172.19.0.1:56854 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:08.665 | INFO:     172.19.0.1:56854 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:57:08.665 | INFO:     172.19.0.1:56854 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:08.666 | INFO:     172.19.0.1:56854 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:08.668 | INFO:     172.19.0.1:56864 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:08.668 | INFO:     172.19.0.1:56854 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:10.946 | INFO:     172.19.0.1:56854 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:10.947 | INFO:     172.19.0.1:56854 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:10.948 | INFO:     172.19.0.1:56870 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:10.949 | INFO:     172.19.0.1:56870 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:11.612 | INFO:     172.19.0.1:56884 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:11.614 | INFO:     172.19.0.1:56884 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:27.482 | INFO:     172.19.0.1:54284 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:57:27.482 | INFO:     172.19.0.1:54284 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:27.483 | INFO:     172.19.0.1:54284 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:28.777 | INFO:     172.19.0.1:54294 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:28.778 | INFO:     172.19.0.1:54294 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:28.780 | INFO:     172.19.0.1:54294 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:28.780 | INFO:     172.19.0.1:54294 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:57:28.781 | INFO:     172.19.0.1:54294 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:28.782 | INFO:     172.19.0.1:54294 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:28.783 | INFO:     172.19.0.1:54302 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:28.784 | INFO:     172.19.0.1:54302 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:28.788 | INFO:     172.19.0.1:54302 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:28.789 | INFO:     172.19.0.1:54302 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:28.790 | INFO:     172.19.0.1:54306 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:28.791 | INFO:     172.19.0.1:54306 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:36.835 | INFO:     172.19.0.1:36284 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:36.836 | INFO:     172.19.0.1:36284 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:47.552 | INFO:     172.19.0.1:35294 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:57:47.553 | INFO:     172.19.0.1:35294 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:47.553 | INFO:     172.19.0.1:35294 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:48.831 | INFO:     172.19.0.1:35310 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:48.833 | INFO:     172.19.0.1:35310 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:48.834 | INFO:     172.19.0.1:35316 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:48.835 | INFO:     172.19.0.1:35316 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:57:48.836 | INFO:     172.19.0.1:35316 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:48.837 | INFO:     172.19.0.1:35332 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:48.837 | INFO:     172.19.0.1:35316 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:48.838 | INFO:     172.19.0.1:35332 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:50.753 | INFO:     172.19.0.1:35336 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:57:50.754 | INFO:     172.19.0.1:35336 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:50.754 | INFO:     172.19.0.1:35336 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:52.209 | INFO:     172.19.0.1:35344 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:52.210 | INFO:     172.19.0.1:35344 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:52.211 | INFO:     172.19.0.1:35344 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:52.212 | INFO:     172.19.0.1:35344 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:57:52.213 | INFO:     172.19.0.1:35344 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:52.214 | INFO:     172.19.0.1:35344 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:52.214 | INFO:     172.19.0.1:35370 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:52.215 | INFO:     172.19.0.1:35344 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:52.680 | INFO:     172.19.0.1:35332 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:52.681 | INFO:     172.19.0.1:35332 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:52.682 | INFO:     172.19.0.1:35386 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:52.683 | INFO:     172.19.0.1:35386 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:53.541 | INFO:     172.19.0.1:35386 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:53.542 | INFO:     172.19.0.1:35386 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:54.753 | INFO:     172.19.0.1:35344 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:54.754 | INFO:     172.19.0.1:35344 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:54.755 | INFO:     172.19.0.1:56500 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:54.756 | INFO:     172.19.0.1:56500 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:55.727 | INFO:     172.19.0.1:56500 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:55.728 | INFO:     172.19.0.1:56510 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:57:55.728 | INFO:     172.19.0.1:56500 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:55.729 | INFO:     172.19.0.1:56510 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:55.730 | INFO:     172.19.0.1:56510 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:57:57.299 | INFO:     172.19.0.1:56518 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:57.300 | INFO:     172.19.0.1:56518 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:57.302 | INFO:     172.19.0.1:56518 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:57.303 | INFO:     172.19.0.1:56518 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:57:57.304 | INFO:     172.19.0.1:56518 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:57.305 | INFO:     172.19.0.1:56518 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:57:57.306 | INFO:     172.19.0.1:56530 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:57:57.307 | INFO:     172.19.0.1:56518 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:21.639 | INFO:     172.19.0.1:45310 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:58:21.640 | INFO:     172.19.0.1:45310 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:58:21.641 | INFO:     172.19.0.1:45310 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:58:21.841 | INFO:     172.19.0.1:45320 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 13:58:21.842 | INFO:     172.19.0.1:45320 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:58:21.842 | INFO:     172.19.0.1:45320 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 13:58:23.418 | INFO:     172.19.0.1:45332 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:23.422 | INFO:     172.19.0.1:45332 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:23.425 | INFO:     172.19.0.1:45332 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:23.426 | INFO:     172.19.0.1:45336 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:23.427 | INFO:     172.19.0.1:45332 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:58:23.429 | INFO:     172.19.0.1:45332 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:23.430 | INFO:     172.19.0.1:45336 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:23.431 | INFO:     172.19.0.1:45352 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:23.432 | INFO:     172.19.0.1:45332 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:23.433 | INFO:     172.19.0.1:45352 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:23.436 | INFO:     172.19.0.1:45360 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:23.439 | INFO:     172.19.0.1:45360 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 13:58:23.440 | INFO:     172.19.0.1:45360 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:23.441 | INFO:     172.19.0.1:45360 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:23.443 | INFO:     172.19.0.1:45370 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:23.445 | INFO:     172.19.0.1:45360 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:24.725 | INFO:     172.19.0.1:45352 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:24.726 | INFO:     172.19.0.1:45352 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:24.728 | INFO:     172.19.0.1:48340 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:24.729 | INFO:     172.19.0.1:48340 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:27.056 | INFO:     172.19.0.1:48340 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:27.057 | INFO:     172.19.0.1:48340 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:33.833 | INFO:     172.19.0.1:56544 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:33.834 | INFO:     172.19.0.1:56544 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:33.895 | INFO:     172.19.0.1:48344 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:33.896 | INFO:     172.19.0.1:48344 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:34.006 | INFO:     172.19.0.1:48354 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:34.007 | INFO:     172.19.0.1:48354 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:35.181 | INFO:     172.19.0.1:48354 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:35.182 | INFO:     172.19.0.1:48354 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:45.934 | INFO:     172.19.0.1:58028 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:45.936 | INFO:     172.19.0.1:58028 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:46.107 | INFO:     172.19.0.1:58042 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:46.108 | INFO:     172.19.0.1:58042 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:46.111 | INFO:     172.19.0.1:58050 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:46.111 | INFO:     172.19.0.1:58050 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:58:46.116 | INFO:     172.19.0.1:58050 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:58:46.118 | INFO:     172.19.0.1:58050 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:59:05.359 | INFO:     172.19.0.1:60544 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:59:05.360 | INFO:     172.19.0.1:60544 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:59:05.370 | INFO:     172.19.0.1:60544 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:59:05.371 | INFO:     172.19.0.1:60544 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:59:05.384 | INFO:     172.19.0.1:60544 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:59:05.385 | INFO:     172.19.0.1:60544 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:59:05.975 | INFO:     172.19.0.1:60550 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:59:05.976 | INFO:     172.19.0.1:60550 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:59:29.123 | INFO:     172.19.0.1:53374 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:59:29.124 | INFO:     172.19.0.1:53374 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:59:29.583 | INFO:     172.19.0.1:53390 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:59:29.585 | INFO:     172.19.0.1:53390 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:59:30.718 | INFO:     172.19.0.1:53390 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:59:30.719 | INFO:     172.19.0.1:53390 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 13:59:30.959 | INFO:     172.19.0.1:53404 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 13:59:30.960 | INFO:     172.19.0.1:53404 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:00:53.214 | INFO:     172.19.0.1:54746 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 14:00:53.214 | INFO:     172.19.0.1:54746 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:00:53.215 | INFO:     172.19.0.1:54746 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:00:54.465 | INFO:     172.19.0.1:54756 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:00:54.467 | INFO:     172.19.0.1:54756 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:00:54.468 | INFO:     172.19.0.1:54756 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:00:54.469 | INFO:     172.19.0.1:54756 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:00:54.470 | INFO:     172.19.0.1:54756 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:00:54.471 | INFO:     172.19.0.1:54756 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:00:54.471 | INFO:     172.19.0.1:54772 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:00:54.472 | INFO:     172.19.0.1:54772 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:00:57.138 | INFO:     172.19.0.1:54772 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:00:57.139 | INFO:     172.19.0.1:54772 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:00:57.141 | INFO:     172.19.0.1:43842 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:00:57.142 | INFO:     172.19.0.1:43842 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:00:58.053 | INFO:     172.19.0.1:43842 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:00:58.053 | INFO:     172.19.0.1:43842 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:38.160 | INFO:     172.19.0.1:55208 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:38.165 | INFO:     172.19.0.1:55210 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:02:38.166 | INFO:     172.19.0.1:55224 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:38.168 | INFO:     172.19.0.1:55238 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:38.176 | INFO:     172.19.0.1:55244 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:38.181 | INFO:     172.19.0.1:55260 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.902 | INFO:     172.19.0.1:48070 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.906 | INFO:     172.19.0.1:48084 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:02:53.906 | INFO:     172.19.0.1:48086 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.909 | INFO:     172.19.0.1:48098 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.917 | INFO:     172.19.0.1:48114 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.923 | INFO:     172.19.0.1:48120 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.965 | INFO:     172.19.0.1:48132 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.968 | INFO:     172.19.0.1:48142 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:02:53.969 | INFO:     172.19.0.1:48150 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.971 | INFO:     172.19.0.1:48158 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.976 | INFO:     172.19.0.1:48172 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.983 | INFO:     172.19.0.1:48174 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.990 | INFO:     172.19.0.1:48178 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:53.997 | INFO:     172.19.0.1:48180 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:54.005 | INFO:     172.19.0.1:48192 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:54.012 | INFO:     172.19.0.1:48208 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:54.018 | INFO:     172.19.0.1:48220 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:54.025 | INFO:     172.19.0.1:48234 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:02:54.032 | INFO:     172.19.0.1:48238 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:01.779 | INFO:     172.19.0.1:46230 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:01.780 | INFO:     172.19.0.1:46230 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:01.791 | INFO:     172.19.0.1:46230 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:01.792 | INFO:     172.19.0.1:46230 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:18.790 | INFO:     172.19.0.1:59146 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:18.794 | INFO:     172.19.0.1:59154 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:03:18.795 | INFO:     172.19.0.1:59170 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:18.798 | INFO:     172.19.0.1:59186 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:18.808 | INFO:     172.19.0.1:59190 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:18.816 | INFO:     172.19.0.1:59204 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:19.170 | INFO:     172.19.0.1:59218 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:29.252 | INFO:     172.19.0.1:45112 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 14:03:29.253 | INFO:     172.19.0.1:45112 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:03:29.254 | INFO:     172.19.0.1:45112 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:03:30.533 | INFO:     172.19.0.1:45116 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:30.535 | INFO:     172.19.0.1:45116 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:30.537 | INFO:     172.19.0.1:45116 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:30.538 | INFO:     172.19.0.1:45116 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:03:30.540 | INFO:     172.19.0.1:45116 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:30.540 | INFO:     172.19.0.1:45124 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:30.541 | INFO:     172.19.0.1:45116 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:30.543 | INFO:     172.19.0.1:45124 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:33.436 | INFO:     172.19.0.1:45124 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:33.437 | INFO:     172.19.0.1:45124 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:33.438 | INFO:     172.19.0.1:45128 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:33.439 | INFO:     172.19.0.1:45128 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:03:34.460 | INFO:     172.19.0.1:45136 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:03:34.461 | INFO:     172.19.0.1:45136 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:06:24.918 | INFO:     172.19.0.1:34884 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 14:06:24.918 | INFO:     172.19.0.1:34884 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:06:24.919 | INFO:     172.19.0.1:34884 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:06:26.219 | INFO:     172.19.0.1:34452 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:06:26.221 | INFO:     172.19.0.1:34452 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:06:26.224 | INFO:     172.19.0.1:34452 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:06:26.224 | INFO:     172.19.0.1:34452 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:06:26.225 | INFO:     172.19.0.1:34452 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:06:26.226 | INFO:     172.19.0.1:34468 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:06:26.227 | INFO:     172.19.0.1:34452 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:06:26.227 | INFO:     172.19.0.1:34468 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:06:26.228 | 2026-03-04 22:06:26 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:06:29.058 | INFO:     172.19.0.1:34468 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:06:29.059 | INFO:     172.19.0.1:34468 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:06:29.060 | 2026-03-04 22:06:29 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 14:06:29.060 | INFO:     172.19.0.1:34478 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:06:29.062 | 2026-03-04 22:06:29 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 14:06:29.062 | INFO:     172.19.0.1:34478 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:06:30.058 | INFO:     172.19.0.1:34486 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:06:30.059 | 2026-03-04 22:06:30 - mcp.server.streamable_http - INFO - Terminating session: 958c97551f584738a0188a5c1786943d
+2026-03-04 14:06:30.059 | INFO:     172.19.0.1:34486 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:11.126 | INFO:     172.19.0.1:60608 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 14:07:11.126 | INFO:     172.19.0.1:60608 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:07:11.127 | INFO:     172.19.0.1:60608 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:07:12.337 | INFO:     172.19.0.1:60614 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:12.339 | INFO:     172.19.0.1:60614 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:12.341 | INFO:     172.19.0.1:60614 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:12.342 | INFO:     172.19.0.1:60614 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:07:12.343 | INFO:     172.19.0.1:60614 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:12.344 | INFO:     172.19.0.1:60620 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:12.345 | INFO:     172.19.0.1:60614 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:12.345 | INFO:     172.19.0.1:60620 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:12.346 | 2026-03-04 22:07:12 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:07:14.811 | INFO:     172.19.0.1:60620 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:14.812 | INFO:     172.19.0.1:60620 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:14.813 | 2026-03-04 22:07:14 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 14:07:14.813 | INFO:     172.19.0.1:60626 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:14.814 | INFO:     172.19.0.1:60626 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:14.814 | 2026-03-04 22:07:14 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 14:07:15.737 | INFO:     172.19.0.1:60620 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:15.737 | INFO:     172.19.0.1:60620 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:15.737 | 2026-03-04 22:07:15 - mcp.server.streamable_http - INFO - Terminating session: 3a4d4f0c97464e7cb4fb1bdb491238ec
+2026-03-04 14:07:32.828 | INFO:     172.19.0.1:49954 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 14:07:32.829 | INFO:     172.19.0.1:49954 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:07:32.830 | INFO:     172.19.0.1:49954 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:07:34.088 | INFO:     172.19.0.1:49958 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:34.089 | INFO:     172.19.0.1:49958 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:34.091 | INFO:     172.19.0.1:49958 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:34.092 | INFO:     172.19.0.1:49958 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:07:34.093 | INFO:     172.19.0.1:49958 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:34.094 | INFO:     172.19.0.1:49958 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:34.094 | INFO:     172.19.0.1:49966 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:34.095 | INFO:     172.19.0.1:49966 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:34.096 | 2026-03-04 22:07:34 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:07:34.645 | INFO:     172.19.0.1:49966 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:34.646 | INFO:     172.19.0.1:49966 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:34.646 | 2026-03-04 22:07:34 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 14:07:34.647 | INFO:     172.19.0.1:49982 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:34.648 | INFO:     172.19.0.1:49982 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:34.648 | 2026-03-04 22:07:34 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 14:07:37.404 | INFO:     172.19.0.1:49982 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:07:37.405 | INFO:     172.19.0.1:49982 - "DELETE /mcp HTTP/1.1" 200 OK
+2026-03-04 14:07:37.404 | 2026-03-04 22:07:37 - mcp.server.streamable_http - INFO - Terminating session: ecbbd2bb062643afbb20b43414d0c930
+2026-03-04 14:08:12.582 | INFO:     172.19.0.1:51384 - "GET /.well-known/oauth-authorization-server/mcp HTTP/1.1" 404 Not Found
+2026-03-04 14:08:12.583 | INFO:     172.19.0.1:51384 - "GET /mcp/.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:08:12.583 | INFO:     172.19.0.1:51384 - "GET /.well-known/oauth-authorization-server HTTP/1.1" 404 Not Found
+2026-03-04 14:08:13.967 | INFO:     172.19.0.1:51392 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:08:13.968 | INFO:     172.19.0.1:51392 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:08:13.970 | INFO:     172.19.0.1:51392 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:08:13.971 | INFO:     172.19.0.1:51392 - "POST /mcp HTTP/1.1" 202 Accepted
+2026-03-04 14:08:13.971 | INFO:     172.19.0.1:51392 - "GET /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:08:13.972 | INFO:     172.19.0.1:51392 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:08:13.973 | INFO:     172.19.0.1:51402 - "GET /mcp HTTP/1.1" 200 OK
+2026-03-04 14:08:13.974 | INFO:     172.19.0.1:51392 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:08:13.975 | 2026-03-04 22:08:13 - mcp.server.lowlevel.server - INFO - Processing request of type ListToolsRequest
+2026-03-04 14:08:16.175 | INFO:     172.19.0.1:51392 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:08:16.177 | INFO:     172.19.0.1:51392 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:08:16.177 | 2026-03-04 22:08:16 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourcesRequest
+2026-03-04 14:08:16.178 | INFO:     172.19.0.1:35540 - "POST /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:08:16.179 | INFO:     172.19.0.1:35540 - "POST /mcp HTTP/1.1" 200 OK
+2026-03-04 14:08:16.179 | 2026-03-04 22:08:16 - mcp.server.lowlevel.server - INFO - Processing request of type ListResourceTemplatesRequest
+2026-03-04 14:08:18.022 | 2026-03-04 22:08:18 - mcp.server.streamable_http - INFO - Terminating session: a49324367f5942149c770532053e34f8
+2026-03-04 14:08:18.021 | INFO:     172.19.0.1:35540 - "DELETE /mcp/ HTTP/1.1" 307 Temporary Redirect
+2026-03-04 14:08:18.022 | INFO:     172.19.0.1:35540 - "DELETE /mcp HTTP/1.1" 200 OK

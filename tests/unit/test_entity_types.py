@@ -36,20 +36,20 @@ class TestEntityTypes:
         assert gene.symbol == "BRCA1"
 
     def test_drug_with_phase(self):
-        drug = Drug(name="Aspirin", chembl_id="CHEMBL25", phase=4)
+        drug = Drug(drug_name="Aspirin", chembl_id="CHEMBL25", phase=4)
         assert drug.phase == 4
 
     def test_protein_creation(self):
-        protein = Protein(uniprot_id="P38398", name="BRCA1")
+        protein = Protein(uniprot_id="P38398", protein_name="BRCA1")
         assert protein.uniprot_id == "P38398"
 
     def test_disease_creation(self):
-        disease = Disease(name="Breast cancer")
-        assert disease.name == "Breast cancer"
+        disease = Disease(disease_name="Breast cancer")
+        assert disease.disease_name == "Breast cancer"
         assert disease.mondo_id is None
 
     def test_pathway_creation(self):
-        pathway = Pathway(name="MAPK signaling", wikipathways_id="WP382")
+        pathway = Pathway(pathway_name="MAPK signaling", wikipathways_id="WP382")
         assert pathway.wikipathways_id == "WP382"
 
     def test_biosciences_types_in_registry(self):

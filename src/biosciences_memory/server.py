@@ -22,7 +22,7 @@ from pydantic import BaseModel
 from starlette.responses import JSONResponse
 
 from biosciences_memory.config.schema import GraphitiConfig
-from biosciences_memory.models.entity_types import ENTITY_TYPES
+from biosciences_memory.models.entity_types import EDGE_TYPE_MAP, EDGE_TYPES, ENTITY_TYPES
 from biosciences_memory.models.response_types import (
     EpisodeSearchResponse,
     ErrorResponse,
@@ -171,6 +171,8 @@ class GraphitiService:
         self.semaphore = asyncio.Semaphore(semaphore_limit)
         self.client: Graphiti | None = None
         self.entity_types = None
+        self.edge_types = None
+        self.edge_type_map = None
 
     async def initialize(self) -> None:
         """Initialize the Graphiti client with factory-created components."""
@@ -190,8 +192,11 @@ class GraphitiService:
 
             db_config = DatabaseDriverFactory.create_config(self.config.database)
 
-            # Build custom entity types from config, or use biosciences defaults
+            # Build custom entity types from config, or use biosciences defaults.
+            # Edge types are only available from the built-in biosciences ontology.
             custom_types = None
+            custom_edge_types = None
+            custom_edge_type_map = None
             if self.config.graphiti.entity_types:
                 custom_types = {}
                 for entity_type in self.config.graphiti.entity_types:
@@ -204,7 +209,11 @@ class GraphitiService:
             else:
                 # Use biosciences domain entity types as default
                 custom_types = ENTITY_TYPES
+                custom_edge_types = EDGE_TYPES
+                custom_edge_type_map = EDGE_TYPE_MAP
             self.entity_types = custom_types
+            self.edge_types = custom_edge_types
+            self.edge_type_map = custom_edge_type_map
 
             # Use custom Neo4j driver with connection pool configuration
             # This prevents "defunct connection" errors with Neo4j Aura
@@ -377,6 +386,8 @@ def _register_tools(
                 source_description=source_description,
                 episode_type=episode_type,
                 entity_types=graphiti_svc.entity_types,
+                edge_types=getattr(graphiti_svc, "edge_types", None),
+                edge_type_map=getattr(graphiti_svc, "edge_type_map", None),
                 uuid=uuid or None,
             )
 

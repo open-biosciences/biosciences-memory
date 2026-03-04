@@ -49,10 +49,10 @@ htmlcov/
 
 # Claude Code - protect credentials and auth tokens
 # Keep commands but exclude any credential/auth files
-.claude/*
+# .claude/*
 # !.claude/skills/
 # !.claude/commands/
-!.claude/settings.json
+# .claude/settings.json
 
 # ra_*/ directories
 # ra_*/
@@ -62,3 +62,7 @@ htmlcov/
 
 # docs/video/
 docs/video/
+
+# python cache files
+__pycache__/
+*.py[cod]
